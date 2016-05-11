@@ -1,0 +1,27 @@
+--- Installation of Wampserver ---
+BEFORE proceeding with the installation of Wampserver, you must ensure that certain elements are installed on your system, otherwise Wampserver will absolutely not run, and in addition, the installation will be faulty and you need to remove Wampserver BEFORE installing the elements that were missing.
+
+Make sure you are "up to date" in the redistributable packages VC9, VC10, VC11, VC13 and VC14
+Even if you think you are up to date, install each package as administrator and if message "Already installed", validate Repair.
+
+The following packages (VC9, VC10, VC11) are imperatively required to Wampserver 2.4, 2.5 and 3.0, even if you use only Apache and PHP versions VC11 and VC14 is required for PHP 7 and Apache 2.4.17
+-- VC9 Packages (Visual C++ 2008 SP1)
+http://www.microsoft.com/en-us/download/details.aspx?id=5582
+http://www.microsoft.com/en-us/download/details.aspx?id=2092
+-- VC10 Packages (Visual C++ 2010 SP1)
+http://www.microsoft.com/en-us/download/details.aspx?id=8328
+http://www.microsoft.com/en-us/download/details.aspx?id=13523
+-- VC11 Packages (Visual C++ 2012 Update 4)
+The two files VSU4\vcredist_x86.exe and VSU4\vcredist_x64.exe to be download are on the same page:
+http://www.microsoft.com/en-us/download/details.aspx?id=30679
+-- VC13 Packages[/b] (Visual C++ 2013[)
+The two files VSU4\vcredist_x86.exe and VSU4\vcredist_x64.exe to be download are on the same page:
+https://www.microsoft.com/en-us/download/details.aspx?id=40784
+-- VC14 Packages (Visual C++ 2015)
+The two files vcredist_x86.exe and vcredist_x64.exe to be download are on the same page:
+http://www.microsoft.com/fr-fr/download/details.aspx?id=48145
+
+If you have a 64-bit Windows, you must install both 32 and 64bit versions, even if you do not use Wampserver 64 bit.
+
+This is item number 20 of TROUBLESHOOTING TIPS of Wampserver
+http://forum.wampserver.com/read.php?2,134915

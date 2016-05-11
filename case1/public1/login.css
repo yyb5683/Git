@@ -1,0 +1,13 @@
+
+body{
+    background-image: url('../imgs/bg02.jpg');
+}
+a:link,
+a:visited{
+    color:#fff;
+}
+a:hover,
+a:active{
+    color:#000;
+}
+

@@ -1,0 +1,50 @@
+ol,ul {list-style: none;}
+a:link,
+a:visited,
+a:hover,
+a:active{text-decoration:none;}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+
+#logo{
+    width: 45px;
+    margin-top: -13px;
+}
+
+
+.adminlogin{
+    background-image: url('../../imgs/bg04.jpg');
+    background-position: center;
+    background-repeat: repeat-x;
+}
+
+.adminlogin h1{
+    color:#fff;
+}
+a:link,
+a:visited{
+    color:#000;
+}
+a:hover,
+a:active{
+    color:#abcdef;
+}
+
+
+#yyb{
+    text-align:center;
+}
+#tj{
+    padding-left:280px;
+    margin-top:50px;
+}
+#yh{
+    margin-top:170px;
+}
+
+
+.fengo{display: inline;}
+.fengo select{width:55px;height:42px;}
