@@ -17,15 +17,15 @@
     $cate = query($link, $sql);
     
 
-  $sql = "
-    SELECT g.id, g.gname, g.price, g.stock, g.sale, g.is_new, g.is_hot, g.state, g.zan, g.msg, c.cname, c.id AS cid 
-    FROM ".PRE."goods g,".PRE."category c
-    WHERE g.cate_id = c.id
-     ";
+  // $sql = "
+  //   SELECT g.id, g.gname, g.price, g.stock, g.sale, g.is_new, g.is_hot, g.state, g.zan, g.msg, c.cname, c.id AS cid 
+  //   FROM ".PRE."goods g,".PRE."category c
+  //   WHERE g.cate_id = c.id
+  //    ";
 
-    $list = query($link ,$sql);
+  //   $list = query($link ,$sql);
 
-    $list=$list['0'];
+  //   $list=$list['0'];
     // p($list);
     // exit;
  ?>
@@ -47,7 +47,7 @@
         <select name="cate_id">
             <?php if (!empty($cate)): ?>
             <?php foreach ($cate as $val): ?>
-            <option value="<?php echo $val['id'] ?>"<?php echo $val['id']==$list['cid']?'selected':''; ?>><?php echo str_repeat('&nbsp;&nbsp;',substr_count($val['path'],',')).'|--'.$val['cname'] ?></option>
+            <option value="<?php echo $val['id'] ?>"<?php echo $val['id']==$row['id']?'selected':''; ?>><?php echo str_repeat('&nbsp;&nbsp;',substr_count($val['path'],',')).'|--'.$val['cname'] ?></option>
             <?php endforeach ?>
             <?php else: ?>
                 

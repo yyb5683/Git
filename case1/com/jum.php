@@ -1,8 +1,82 @@
-  
-    <div class="datu"><!--大图片开始-->
-            <div><img src="./imgs/jiangjia.jpg" class="fr"></div>
-    </div><!--大图片结束-->
 
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="./imgs/T1aZDjBCYv1RXrhCrK.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="./imgs/T1NTZjBbdT1RXrhCrK.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+      <div class="item">
+      <img src="./imgs/T1XedjByCv1RXrhCrK.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="datu"> -->
+    <!--大图片开始-->
+            <!-- <div><img src="./imgs/jiangjia.jpg" ></div> -->
+    <!-- </div> -->
+    <!--大图片结束-->
+<!-- 
     <div class="xl fl">
     <ul>
         <li>购买手机&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp ></li>
@@ -21,8 +95,7 @@
         <li>按机选择配件&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp></li>
         </ul>
 
-    </div>
-
+    </div> -->
 
 
 
@@ -47,6 +120,8 @@
     <div class="sige br fr"><img src="./imgs/2S-95000.jpg"></div>
     <div class="sige br fr"><img src="./imgs/hongmi-9.jpg"></div>
     <div class="sige br fr"><img src="./imgs/fabuhui0.jpg"></div>
+    <!-- <div class="sige br"><img src="./imgs/fabuhui0.jpg"></div> -->
+
     </div><!--四个小图片结束-->
 
     <!-- <div class="chongzhi"></div> -->

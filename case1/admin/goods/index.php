@@ -24,7 +24,10 @@
      $sql = "SELECT count(*) total FROM s47_goods $where";
     $row = query($link, $sql);
 
+
+
     $total = $row[0]['total'];
+    // p($total);exit;
     
     //每页显示数
     $num =1;
@@ -65,7 +68,9 @@
 
     
     $sql = "SELECT `id`,`gname`,`cate_id`,`price`,`stock`,`sale`,`is_new`,`is_hot`,`state`,`zan`,`msg`
-    FROM ".PRE."goods $where LIMIT $offset,$num";
+    FROM ".PRE."goods LIMIT 0,1";
+
+
 
     //处理结果集
     $user_list = query($link,$sql);
@@ -78,7 +83,7 @@
     //  p($row);
     // exit;
 
-
+    
     
     //8.关闭MYSQL连接
     mysqli_close($link);
@@ -173,6 +178,7 @@
         <?php endif ?>
 
          <?php require ADMIN_PATH.'../com/page.php'; ?>
+
     </div>
 
 </div>

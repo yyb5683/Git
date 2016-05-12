@@ -9,7 +9,97 @@
 
                 $a = $_GET['a'];
         switch ($a) {
+            case 'del_img':
+            $id = $_GET['id'];
+            //查询要删除的图片名和封面状态
+            $sql = "SELECT `iname`,`cover` FROM ".PRE."image WHERE id='$id'";
+            $row = query($link,$sql);
+            $filename = $row[0]['iname'];
+            $cover = $row[0]['cover'];
+            //获取图片的路径
+            $img_path = getpath(ADMIN_PATH.'../uploads/',$filename);
 
+           //获取图片的路径
+            if ($cover == 1) {
+                admin_redirect('不能删除封面图');
+                exit;
+            }
+
+            $sql = "DELETE FROM ".PRE."image WHERE id='$id'";
+            if (execute($link,$sql)) {
+               @ unlink($img_path);
+                @unlink(dirname($img_path).'/350_'.$filename);
+                @unlink(dirname($img_path).'/150_'.$filename);
+                @unlink(dirname($img_path).'/50_'.$filename);
+                admin_redirect('图片删除成功!');
+                exit;
+            }else{
+                admin_redirect('图片删除失败');
+                exit;
+            }
+            break;
+
+        case 'cover':
+            //接收商品ID和图片ID
+            $goods_id = $_GET['goods_id'];
+            $image_id = $_GET['image_id'];
+            //将该商品下的所有图片都设置为非封面 0
+            execute($link, "UPDATE ".PRE."image SET cover='0' WHERE goods_id='$goods_id'");
+            //把传过来的图片ID设为封面
+            execute($link, "UPDATE ".PRE."image SET cover='1' WHERE id='$image_id'");
+            header("location:".$_SERVER['HTTP_REFERER']);
+            break;
+
+        case 'add_img':
+            //获取商品的ID
+            $goods_id = $_POST['goods_id'];
+            //上传图片,图片处理
+            //生成保存根目录
+            $save_dir = ADMIN_PATH.'../uploads/';
+            $filename = up('file', 10485760, array('image'), $save_dir);
+            // v($filename);
+            //判断图片是否上传成功
+            if (!$filename) {
+                admin_redirect('文件上传失败!');
+                exit;
+            }
+
+            //缩放吧,骚年!
+            // 首先要得到上传图片的完整路径
+            $img_path = ADMIN_PATH.'../uploads/';
+            $img_path .= substr($filename, 0, 4).'/';
+            $img_path .= substr($filename, 4, 2).'/';
+            $img_path .= substr($filename, 6, 2).'/';
+            $img_path .= $filename;
+            // echo $img_path;
+            
+            if (
+                !zoom($img_path,350,350) 
+                || 
+                !zoom($img_path,150,150) 
+                || 
+                !zoom($img_path,50,50)
+            ) {
+                //其中有一张缩放失败就,删除原图及小图
+                unlink($img_path);
+                @unlink(dirname($img_path).'/350_'.$filename);
+                @unlink(dirname($img_path).'/150_'.$filename);
+                @unlink(dirname($img_path).'/50_'.$filename);
+                admin_redirect('图片缩放失败!');
+                exit;
+            }
+
+            //文件处理成功,开始写入商品图片表数据
+            $sql = "INSERT INTO ".PRE."image (`iname`,`goods_id`,`cover`) VALUES('$filename','$goods_id','0')";
+            //判断执行结果
+            if (execute($link,$sql)) {
+                admin_redirect('图片添加成功');
+                exit;
+            }else{
+                admin_redirect('图片添加失败');
+                exit;
+            }
+            break; 
 
         case 'state':
         //是否上架
