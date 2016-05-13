@@ -2,7 +2,7 @@
 
     require './init.php';
 
-   
+    
 
 
 
@@ -267,7 +267,7 @@
             <h2>暂无数据</h2>
             <?php else: ?>
 
-        <?php foreach ($list as $key => $val): ?>
+            <?php foreach ($list as $key => $val): ?>
              <div class="sj1 fl "><img src="<?php echo getpath(URL.'uploads/',$val['iname'],'d') ?>">
             <div class="sj1-x">
 

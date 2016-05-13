@@ -1,0 +1,38 @@
+ ol,ul {list-style: none;}
+a:link,
+a:visited,
+a:hover,
+a:active{text-decoration:none;}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+.red{color:#f00;}
+
+body{
+    margin-top: 50px;
+}
+#logo{
+    width: 45px;
+    margin-top: -13px;
+}
+
+.s1 h4{
+    display: block;/*定义显示形式*/
+    overflow: hidden;/*截取超出字符*/
+    text-overflow: ellipsis;/*超出字符以…代替*/
+    white-space: nowrap; /*确定超出宽度字符不换行*/
+}
+
+.spic img{
+    border:1px solid #fff;
+}
+.spic img:hover{
+    border:1px solid #f00;
+    box-shadow: 0 0 10px #f00;
+}
+
+.zan{
+    font-size: 20px;
+}

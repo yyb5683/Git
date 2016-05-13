@@ -2,10 +2,12 @@
     require '../init.php';
     $sql = "
     SELECT g.id, g.gname, g.price, g.stock, g.sale, g.is_new, g.is_hot, g.state, g.zan, g.msg, c.cname, i.iname
-    FROM ".PRE."goods g,".PRE."category c,".PRE."image i
+    FROM ".PRE."goods g,".PRE."category c,".PRE."image i 
     WHERE g.cate_id = c.id AND g.id = i.goods_id AND cover=1
      ";
+     
     $list = query($link ,$sql);
+   
     // p($list);exit;
     
 
@@ -21,7 +23,7 @@
 
     //分页开始
     //总记录数
-     $sql = "SELECT count(*) total FROM s47_goods $where";
+     $sql = "SELECT count(*) total FROM ".PRE."goods $where";
     $row = query($link, $sql);
 
 
@@ -30,7 +32,7 @@
     // p($total);exit;
     
     //每页显示数
-    $num =1;
+    $num =2;
     //总页数
     $allpage = ceil($total / $num);
 
@@ -68,10 +70,8 @@
 
     
     $sql = "SELECT `id`,`gname`,`cate_id`,`price`,`stock`,`sale`,`is_new`,`is_hot`,`state`,`zan`,`msg`
-    FROM ".PRE."goods LIMIT 0,1";
-
-
-
+    FROM ".PRE."goods $where LIMIT $offset,$num";
+     
     //处理结果集
     $user_list = query($link,$sql);
 
@@ -83,7 +83,7 @@
     //  p($row);
     // exit;
 
-    
+
     
     //8.关闭MYSQL连接
     mysqli_close($link);
@@ -178,7 +178,6 @@
         <?php endif ?>
 
          <?php require ADMIN_PATH.'../com/page.php'; ?>
-
     </div>
 
 </div>

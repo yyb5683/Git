@@ -1,4 +1,13 @@
+<?php
+          // require './init.php';
+          $sql = "
+        SELECT i.iname, g.gname, g.id, g.price, g.zan
+        FROM ".PRE."goods g, ".PRE."image i
+        WHERE i.goods_id = g.id AND i.cover=1 AND g.state=1 AND g.is_new=1 limit 4
+    ";
+    $list = query($link, $sql);
 
+?>
 
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -8,6 +17,8 @@
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
+        
+
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -115,11 +126,33 @@
 
 
 
-    <div class="container dasi"><!--四个小图片开始-->
-    <div class="sige br fr"><img src="./imgs/2A-95000.jpg"></div>
+        <div class="container dasi"><!--四个小图片开始-->
+        
+        <?php if (empty($list)): ?>
+        <h2>暂无数据</h2>
+        <?php else: ?>
+
+        <?php foreach ($list as $key => $val): ?>
+
+          <div class="sige br fl">
+                      <a href="./contentinfo.php?id=<?php echo $val['id'] ?>&gname=<?php echo $val['gname'] ?>" target="_blank">
+                      <img src="<?php echo getpath(URL.'uploads/',$val['iname'],'c') ?>">
+                      </a>
+
+          </div>
+
+             
+        <?php endforeach ?>
+        <?php endif ?>
+
+
+
+
+
+    <!-- <div class="sige br fr"><img src="./imgs/2A-95000.jpg"></div>
     <div class="sige br fr"><img src="./imgs/2S-95000.jpg"></div>
     <div class="sige br fr"><img src="./imgs/hongmi-9.jpg"></div>
-    <div class="sige br fr"><img src="./imgs/fabuhui0.jpg"></div>
+    <div class="sige br fr"><img src="./imgs/fabuhui0.jpg"></div> -->
     <!-- <div class="sige br"><img src="./imgs/fabuhui0.jpg"></div> -->
 
     </div><!--四个小图片结束-->
@@ -160,7 +193,7 @@
         <!--左侧fudong-->
         <div class="fudong fr">
         
-        <div class="yihao bo"><img src="./imgs/2016-04-30_232019.jpg"></div>
+        <!-- <div class="yihao bo"><img src="./imgs/2016-04-30_232019.jpg"></div> -->
         <div class="erhao "></div>
         <div class="sanhao "></div>
           
