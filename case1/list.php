@@ -70,7 +70,7 @@
 
     //按分类ID去查询商品数据
     $sql = "
-    SELECT i.iname, g.gname, g.price, g.zan,g.msg 
+    SELECT i.iname, g.gname, g.price, g.zan,g.msg,g.id
     FROM ".PRE."goods g, ".PRE."image i
     WHERE g.id = i.goods_id AND i.cover=1 AND g.state=1 AND cate_id in(SELECT id FROM ".PRE."category WHERE path LIKE '$bpath%')";
     $list = query($link, $sql);
@@ -256,6 +256,7 @@
 
 
 
+            <div class="clear"></div>
 
 
             <div class="ys1">
@@ -268,15 +269,24 @@
             <?php else: ?>
 
             <?php foreach ($list as $key => $val): ?>
-             <div class="sj1 fl "><img src="<?php echo getpath(URL.'uploads/',$val['iname'],'d') ?>">
+             <div class="sj1 fl ">
+              <a href="./contentinfo.php?id=<?php echo $val['id'] ?>&gname=<?php echo $val['gname'] ?>" target="_blank">
+             <img src="<?php echo getpath(URL.'uploads/',$val['iname'],'d') ?>">
+             </a>
             <div class="sj1-x">
-
+                 <a href="./contentinfo.php?id=<?php echo $val['id'] ?>&gname=<?php echo $val['gname'] ?>" target="_blank">
              <span id="sp0"><span class="sp1"><?php echo $val['gname']?><span/> &nbsp <span class="sp2">&nbsp<?php echo $val['price']?></span><span class="sp3">元起</span></span>
+             </span>
+                <div class="ljgm fr">
+             <button type="button" class="btn btn-danger btn-lg">立即购买</button>
+             </div>
 
              <div class="xiaolong ">
              <?php echo $val['msg']?>
 
+
              </div>
+             
             </div><!--end sj1-x-->
             </div><!--end sj1-->
 
@@ -310,8 +320,8 @@
 
 
 
-            <!-- <div class="ys1"><!--ys2--> 
-                   <!--  <div class="sj3 fl bb"><img src="./h3dhy.jpg">
+            <!-- <div class="ys1">
+                    <div class="sj3 fl bb"><img src="./h3dhy.jpg">
                     <div class="sj1-x">
                 <span id="sp0"><span class="sp1">红米手机3<span/> &nbsp <span class="sp2"> 1999</san><span class="sp3">元起</span></span>
                 <div class="xiaolong ">骁龙820处理器,4GB内存,128GB闪存,4轴<br>防抖相机,3D陶瓷机身</div>
@@ -332,8 +342,8 @@
             <!-- </div> end ys2 -->
 
 
-                        <!-- <div class="ys1"><!--ys2--> 
-                    <!-- div class="sj3 fl bb"><img src="./T1jUh_B7hv1RXrhCrK.jpg">
+                        <!-- <div class="ys1">
+                     div class="sj3 fl bb"><img src="./T1jUh_B7hv1RXrhCrK.jpg">
                     <div class="sj1-x">
                 <span id="sp0"><span class="sp1">小米手机4c <span/> &nbsp <span class="sp2"> 1099</span><span class="sp3">元起</span></span>
                 <div class="xiaolong ">骁龙808旗舰手机,经典的5英寸屏幕与全包围外壳珠联璧合,让你爱不释手 </div>
@@ -361,8 +371,8 @@
 
 
 
-                        <!-- <div class="ys1"><!--ys2--> 
-                    <!-- <div class="sj3 fl bb"><img src="./T1u2D_BXEv1RXrhCrK.jpg">
+                        <!-- <div class="ys1">
+                    <div class="sj3 fl bb"><img src="./T1u2D_BXEv1RXrhCrK.jpg">
                     <div class="sj1-x">
                 <span id="sp0"><span class="sp1">红米Not3<span/> &nbsp <span class="sp2"> 899</span><span class="sp3">元起</span></span>
                 <div class="xiaolong ">金属机身,指纹识别,4000mAh轻薄大电池,1300万像素相位对焦相机,双网通 </div>
@@ -397,21 +407,21 @@
     <div class="clear"></div>
 
         <div class="baozhang bb">
-        <img src="./phone-section-01.png">
+        <!-- <img src="./phone-section-01.png"> -->
 
 
 
         <div class="dh bb">
-                        <img src="./mi-mobile.jpg">
+                        <!-- <img src="./mi-mobile.jpg"> -->
         </div>
 
         <div class="ze bb">
-          <img src="./phone-section-02.png">
+          <!-- <img src="./phone-section-02.png"> -->
         </div>
 
 
         <div class="ze bb">
-          <img src="./phone-section-04.jpg">
+          <!-- <img src="./phone-section-04.jpg"> -->
         </div>
 
           

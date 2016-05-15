@@ -14,7 +14,7 @@
     //将该商品的所有非封面全部查出来
     $sql = "SELECT iname FROM ".PRE."image WHERE goods_id='$goods_id' AND cover=0";
     $img_list = query($link, $sql);
-    // p($img_list);
+    p($img_list);
 ?>
 
 <div class="container mt50">
@@ -68,7 +68,7 @@
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                         <div class="col-md-6">
-                             <input type="text" name="qty" value="1" maxlength="3" class="form-control text-center zan" id="num">
+                             <input type="text" name="qty" value="1" maxlength="3"class="form-control text-center zan" id="num">
                         </div>
                         <button type="button" class="btn col-md-3" onclick="plus()">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -90,3 +90,5 @@
         </div><!-- END pull-right -->
     </div><!-- END row -->
 </div><!-- END container -->
+
+

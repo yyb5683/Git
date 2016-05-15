@@ -26,13 +26,13 @@
   <?php if (empty($_SESSION['home'])): ?>
     <div ><!--登录注册 开始-->
     <ul class="denglu">
-          <li><a href=""><span class="glyphicon glyphicon-shopping-cart -lg"></span>购物车</a></li>
+          <li><a href="./showcart.php"><span class="glyphicon glyphicon-shopping-cart -lg"></span>购物车</a></li>
           <li><label><a data-needlogin="true" href="<?php echo URL ?>login.php">  登录&nbsp&nbsp</a> <a href="<?php echo URL ?>reg.php"> 注册&nbsp&nbsp&nbsp</a></label>
           </li>
     <!--   <li id=""><a href="" onclick="_gaq.push(['_trackEvent', '首页', 'A', '我的订单']);">我的订单</a>
         </li> -->
         <li>
-              <a href="#"> 欢迎来到本站&nbsp&nbsp&nbsp</a>
+              
         </li>
          </li>
         <li>
@@ -48,13 +48,21 @@
     <!--   <li id=""><a href="" onclick="_gaq.push(['_trackEvent', '首页', 'A', '我的订单']);">我的订单</a>
         </li> -->
         <li>
+              <a href="./showcart.php"><span class="glyphicon glyphicon-shopping-cart -lg"></span>购物车</a>
+        </li>
+
+        <li>
               <a href="./com/logout.php"> 退出 &nbsp &nbsp&nbsp&nbsp</a>
         </li>
-        <li><a href="#">个人中心&nbsp&nbsp&nbsp&nbsp</a></li>
+
+        <li>
+              <a href="#">个人中心&nbsp&nbsp&nbsp&nbsp</a>
+        </li>
+        
         <li>
             <a href="#" class="" data-toggle=""><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['home']['name'] ?> &nbsp&nbsp&nbsp</a>
         </li>
-    
+
 
         </ul>
       

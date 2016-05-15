@@ -2,9 +2,10 @@
     margin:0px;
     padding:0px;
     list-style:none;
-    text-decoration: none;
+     text-decoration: none;
 
 }
+
 .w{
     width:100%;
     margin:0 auto;
@@ -128,9 +129,12 @@ color:#ffffff;
 
 }
 .sj1{
-    width:606px;
-    height:490px;
+    /*width:606px;*/
+    /*height:490px;*/
     margin-top:15px;
+}
+.sj1 a{
+     text-decoration: none;
 }
 .sj2{
     width:606px;
@@ -144,6 +148,7 @@ color:#ffffff;
     height:115px;
     margin-left:49px;
     border-top:1px solid #EEEEEE;
+
 }
 .sj1-x span{
     width:310px;
@@ -151,7 +156,7 @@ color:#ffffff;
 
 .sp1{
     font-size:22px;
-     
+
      
 }
 .sp2{
@@ -169,6 +174,7 @@ color:#ffffff;
     margin-top:20px;
     width:310px;
     color:#757575;
+    margin-left:50px;
 
 }
 .sj3{
@@ -186,7 +192,7 @@ color:#ffffff;
 .baozhang{
        width:1351px;
     height:590px;
-    margin-top:15px;
+    margin-top:50px;
     
 
 }
@@ -309,4 +315,13 @@ dt{
 }
 .bzz2 a:hover{
   color:#FF6709;
+}
+.ljgm{
+  margin-top:50px;
+  margin-right:30px;
+}
+
+#sp0{
+  padding-top:20px;
+  margin-left:50px;
 }

@@ -6,6 +6,7 @@
         WHERE i.goods_id = g.id AND i.cover=1 AND g.state=1 AND g.is_new=1 limit 4
     ";
     $list = query($link, $sql);
+    // p($list);exit;
 
 ?>
 
@@ -126,7 +127,7 @@
 
 
 
-        <div class="container dasi"><!--四个小图片开始-->
+        <div class="container"><!--四个小图片开始-->
         
         <?php if (empty($list)): ?>
         <h2>暂无数据</h2>
@@ -161,7 +162,7 @@
 
 
 
-
+    <div class="fc"></div>
     <div class="container"><!--四个小图片开始-->
      <div class="xinpin">新品上架</div>
 
