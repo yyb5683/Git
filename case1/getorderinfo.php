@@ -17,7 +17,19 @@ if(empty($_SESSION['home'])){
 
 }
 
+$total = $_GET['total'];
+// p($total);
 
+
+$_SESSION['allprice']=$total;
+
+// p($_POST);
+
+
+p($_SESSION);
+$oname=$_SESSION['oname'];
+$phone=$_SESSION['phone'];
+$address=$_SESSION['address'];
 
 
 
@@ -93,73 +105,74 @@ if(empty($_SESSION['home'])){
 
   
 
-                <form id="sheng" class="form-inline" action="./dizhi.php" method="post">
+                <form id="sheng" class="form-horizontal" action="./getorderinfo.php" method="post">
 
                 
                 <tr><h3 class="h3">选择收货地址</h3></tr>
+             
+
+               
+
                 <tr>
-                    &nbsp;&nbsp;省:&nbsp;<select name="省" class="form-control">
-                    <option value="上海市">上海市</option>
-                        <option  value="山东">山东</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                     
-                     &nbsp;&nbsp;市:&nbsp;<select name="市" class="form-control">
-                        <option value="上海市">上海市</option>
-                        <option value="泰安">泰安</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-
-                     &nbsp;&nbsp;区:&nbsp;<select name="区" class="form-control">
-                        <option value="浦东新区">浦东新区</option>
-                        <option value="新泰">新泰</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select><br><br>
-
-
-                </tr>
-                <tr>
-                <th>邮政编码:</th>
-                <td>
-                <input type="text" name="yzbm" class="form-control" name="yz">
-                </td>
+             
+                
 
                 </tr><br><br>
                 <tr>
-                    <th>街道地址:</th>
+                    <th>详细地址省市区街道:</th>
                     <td>
-                        <input type="textarea"  class="form-control"name="dz">
+                        <input type="textarea"  class="form-control"name="address">
                     </td>
                 </tr><br><br>
                 <tr>
                     <th>收货人姓名:</th>
-                    <td><input type="text" class="form-control" name="username"></td>
+                    <td><input type="text" class="form-control" name="oname"></td>
                 </tr><br><br>
                 <tr>
                     <th>手机号:</th>
-                    <td><input type="text" class="form-control" name="tel"></td>
+                    <td><input type="text" class="form-control" name="phone"></td>
                 </tr><br><br>
                 <tr>
-                    <button type="submit">确认地址</button>
-                    <button>取消</button>
+                    <button type="submit" class="btn btn-primary">保存地址</button>
+                    <button type="reset" class="btn btn-primary">取消</button>
+                </tr>
+                    
+                
+                    
+                </form><br><br>
+
+             
+                <form id="sheng" class="form-horizontal" action="./dizhi.php" method="post">
+
+                
+             
+             
+
+               
+
+           
+                <tr>
+                    <th>详细地址省市区街道:</th>
+                    <td>
+                        <input type="textarea"  class="form-control"name="address" value="<?php echo $address?>">
+                    </td>
+                </tr><br><br>
+                <tr>
+                    <th>收货人姓名:</th>
+                    <td><input type="text" class="form-control" name="oname" value="<?php echo $oname?>"</td>
+                </tr><br><br>
+                <tr>
+                    <th>手机号:</th>
+                    <td><input type="text" class="form-control" name="phone" value="<?php echo $phone?>"></td>
+                </tr><br><br>
+                <tr>
+                    <button type="submit" class="btn btn-primary">保存地址</button>
+                    <button type="reset" class="btn btn-primary">取消</button>
                 </tr>
                     
                 
                     
                 </form>
-           
 
 
 
@@ -181,68 +194,9 @@ if(empty($_SESSION['home'])){
 
 
 
-<h1 class="sp">商品:</h1>
 
-<div class="container mt30">
-    <div class="row">
-        
-    </div>
 
-    <div class="row">
-        <?php if (empty($_SESSION['cart'])): ?>
-            <h3>购物车空空如也....</h3>
-            <p><a href="./index.php">[继续购物]</a></p>
-        <?php else: ?>
-            <table class="table">
-                <tr>
-                    <th>图片</th>
-                    <th>商品名</th>
-                    <th>价格</th>
-                    <th>数量</th>
-                    <th>小计</th>
-                    <!-- <th>操作</th> -->
-                </tr>
-                <?php $total = 0; //总价的初始值?>
-                <?php foreach ($_SESSION['cart'] as $key => $val): ?>
-                <tr>
-                    <td>
-                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
-                            <img src="<?php echo @getpath(URL.'uploads/',$val['iname'],'b') ?>">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
-                            <?php echo @$val['gname'] ?>
-                        </a>
-                    </td>
-                    <td><?php echo @$val['price'] ?></td>
-                    <td>
-                        <a href="./com/cartdo.php?a=jian&goods_id=<?php echo $key ?>&qty=<?php echo $val['qty'] ?>">
-                         
-                        </a>
-                         <?php echo $val['qty'] ?> 
-                        <a href="./com/cartdo.php?a=jia&goods_id=<?php echo $key ?>&qty=<?php echo $val['qty'] ?>">
-                           
-                        </a>
-                        
-                    </td>
-                    <td><?php echo @$val['price'] * $val['qty'] ?></td>
-                    
-                </tr>
-                <?php @$total += $val['price'] * $val['qty'];//总价 ?>
-                <?php endforeach ?>
-                <tr>
-                    <td colspan="6" class="text-right">
-                        
-                       
-                        <a class="btn btn-default btn-lg">应付总额: <?php echo $total ?>元</a>
-                        <a href="getorderinfo.php?a=add" class="btn btn-danger btn-lg ">去支付</a>
-                    </td>
-                </tr>
-            </table>
-        <?php endif ?>
-    </div>
-</div>
+
 
 
 <!-- 引入尾部 -->

@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./imgs/bitcoin-blank.png" type="image/png" sizes="16x16">
-    <title>seeker商城</title>
+    <title>小米商城</title>
     <!-- Bootstrap -->
     <link href="./public/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -79,7 +79,7 @@
                         <a href="./index.php" class="btn btn-success">继续购物</a>
                         <a href="./com/cartdo.php?a=alldel" class="btn btn-danger">清空购物车</a>
                         <a href="./index.php" class="btn btn-default">总计: <?php echo $total ?></a>
-                        <a href="getorderinfo.php?a=dl" class="btn btn-primary">去结算</a>
+                        <a href="getorderinfo.php?total= <?php echo $total ?>" class="btn btn-primary">去结算</a>
                     </td>
                 </tr>
             </table>
