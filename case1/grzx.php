@@ -1,14 +1,48 @@
 <?php
  require './init.php';
+
+
+
  
-$sql="
-            SELECT r.price,r.qty,o.ordernum,o.oname,o.phone,o.address,o.allprice,o.status,o.id,i.iname
-            FROM ".PRE."order o,".PRE."ordergoods r, ".PRE."user u, ".PRE."image i
-            WHERE o.id=r.order_id AND u.id=o.user_id AND i.goods_id=r.goods_id
+//
+             $sql="
+                     SELECT o.ordernum, o.id
+                     FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
+                     WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
             ";
-            // p($sql);
+
+            $list=query($link,$sql);
+            p($sql);
+            p($list);
+
+
+
+
+
+
+
+           // $sql="
+           //          SELECT o.ordernum,i.iname, o.id,g.gname,o.status
+           //          FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
+           //          WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
+           // ";
+           
+           
+
+
+           //  p($sql); 
+
+
+           
+           $sql="
+                    SELECT o.ordernum,i.iname, o.id,g.gname,o.status
+                    FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
+                    WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
+           ";
+
             $row=query($link,$sql);
             p($row);
+
 
 
 
@@ -35,7 +69,7 @@ $sql="
     <link rel="stylesheet" href="./public/my4.css">
   </head>
   <body>
-                          <nav>
+            <nav>
               <ul class="nave-top w">
                 
                 <li  class="yidong"><a href="#">小米网</a></li>
@@ -85,310 +119,84 @@ $sql="
               </div>
         </div><!--end feilei-->
 
-        <div class="sy bg">
-        <div>
-          <p class="pinban">首选 > 个人中心</p>
-        </div>
 
-        <div class="ddz bb fl"><!--dingdan-->
-            <ol>
-                <li class="ddzx">订单中心</li>
-                <li class="ddzx2"><a href="">我的订单</a></li>
-                <li class="ddzx2"><a href="">手机意外保</a></li>
-                <li class="ddzx2"><a href="">团购订单</a></li>
-                <li class="ddzx2"><a href="">评价晒单</a></li>
-                <li class="ddzx2"><a href="">话费充值订单</a></li>
-                <li class="ddzx2"><a href="">以旧换新订单</a></li>
-            </ol>
 
 
-            <ol>
-                <li class="ddzx">个人中心</li>
-                <li class="ddzx2"><a href="">我的个人中心</a></li>
-                <li class="ddzx2"><a href="">现金账户</a></li>
-                <li class="ddzx2"><a href="">小米礼品卡</a></li>
-                <li class="ddzx2"><a href="">手机换新券</a></li>
-                <li class="ddzx2"><a href="">喜欢的商品</a></li>
-                <li class="ddzx2"><a href="">优惠券</a></li>
-                <li class="ddzx2"><a href="">收货地址</a></li>
-            </ol>
 
 
 
 
-            <ol>
-                <li class="ddzx">售后服务</li>
-                <li class="ddzx2"><a href="">换货单</a></li>
-                <li class="ddzx2"><a href="">退款单</a></li>
-                <li class="ddzx2"><a href="">团购订单</a></li>
-                <li class="ddzx2"><a href="">维修单</a></li>
-                <li class="ddzx2"><a href="">领取快递报销</a></li>
-                <li class="ddzx2"><a href="">预约亲临门店服务</a></li>
-            </ol>
-
-                <ol>
-                <li class="ddzx">账户管理</li>
-                <li class="ddzx2"><a href="">个人信息</a></li>
-                <li class="ddzx2"><a href="">修改密码</a></li>
-                <li class="ddzx2"><a href="">团购订单</a></li>
-                <li class="ddzx2"><a href="">&nbsp</a></li>
-                <li class="ddzx2"><a href="">&nbsp</a></li>
-           
-          
-            </ol>
-
-
-            
-        </div><!--end dingdan-->
-
-
-
-        <div class="wm bl fr">
-
-        <p class="bt">Hi,金角大王</p>
-        <p class="bt2">我们做了一个小升级：你的用户名可以直接修改啦，去换个酷炫的名字吧。 <a href="">立即前往></a></p>
-
-
-        <div class="bd bb fr">
-        <div class="bd2">
-<!-- 
-            <div class="fl">
-                <p class="pt ">账户安全：<a>普通</a></p><br>
-                <p class="pt ">绑定手机：131********01</p><br>
-                <p class="pt ">绑定邮箱：&nbsp &nbsp &nbsp&nbsp <a  class=""href="">绑定</a></p>
-            </div> -->
-
-        <div class="xg">
-        <img src="./gerenzhongxin/photo.jpg">
-
-        <div class="mz fr">
-        <h2>金角大王</h2>
-        <p class="xw">下午好~</p>
-        <p class="xggr"><a href="">修改个人信息</a></p>
-            
-        </div>
-
-        
-
-</div><!--end xg-->
-
-           
-
-
-
-
-</div><!--end bd2-->
-        
-        <div class="bd3">
-
-        <div class="zf fl">
-        <img src="./gerenzhongxin/portal-icon-1.png">
-            <div class="zf1 fr">
-                <li class="zf2">代支付订单: 0</li>
-                <li class="zf3">查看待支付订单</li>
-          
-            </div>
-
-        </div>
-
-
-        <div class="zf fl">
-            <img src="./gerenzhongxin/portal-icon-2.png">
-               
-            <div class="zf1 fr">
-                <li class="zf2">代支付订单: 0</li>
-                <li class="zf3">查看待支付订单</li>
-                 
-            </div>
-
-        </div>
-
-
-        <div class="zf0 fl">
-            <img src="./gerenzhongxin/portal-icon-3.png">
-               
-            <div class="zf1 fr">
-                <li class="zf2">代支付订单: 0</li>
-                <li class="zf3">查看待支付订单</li>
-                 
-            </div>
-
-        </div>
-
-
-
-<div class="zf0 fl">
-            <img src="./gerenzhongxin/portal-icon-4.png">
-               
-            <div class="zf1 fr">
-                <li class="zf2">代支付订单: 0</li>
-                <li class="zf3">查看待支付订单</li>
-                 
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-            
-        </div>
-
-
-
-            
-        </div><!--end bd-->
-            
-        </div><!--end wn-->
-
-   
-
-      
-
-
-
-            
-        </div><!--end sy-->
-
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="footer ">
-    <div class="footer-a">
-    <span class="footer-b">&nbsp&nbsp&nbsp &nbsp &nbsp <a href="">1小时快修服务</a>&nbsp &nbsp &nbsp &nbsp |</span>
-    <span class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">天无理由退货</a> &nbsp &nbsp &nbsp &nbsp|</span>
-    <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">15天免费换货</a>&nbsp &nbsp &nbsp &nbsp|</span>
-     <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">满150元包邮</a></span>
+        <div class="container">
+    <div class="row">
+        <h1>全部订单</h1>
     </div>
 
+    <div class="row">
+        <?php if (empty($row)): ?>
+            <h3>没有订单信息</h3>
+            <p><a href="./index.php">[继续购物]</a></p>
+        <?php else: ?>
+            <?php foreach ($row as $key =>$val):?>
 
+            <table class="table">
+                <tr >
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="w bb">
+                    <th class="col-md-4">订单号:<?php echo $val['ordernum']?></th>
+                    <th>商品名</th>
+                    <th>订单id:<?php echo $val['id']?></th>
+                    <th>状态</th>
+                    
+                </tr>
                 
-            <dl class="bzz fl">
-                <dt>帮助中心</dt>
+                <tr>
+                    <td>
+                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
+                            <img src="<?php echo @getpath(URL.'uploads/',$val['iname'],'b') ?>">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
+                            <?php echo @$val['gname'] ?>
+                        </a>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+
+                        <?php echo $val['status']==0?'未发货':'已发货';?>
+
+
+                    </td>
                 
-                <dd><a rel="nofollow" href="">购物指南</a></dd>
+                   
+                        
+                        
+                        
+                    
+                </tr>
                 
-                <dd><a rel="nofollow" href="">支付方式</a></dd>
                 
-                <dd><a rel="nofollow" href="">配送方式</a></dd>
-                
-            </dl>
-                
-            <dl class="bzz2 fl">
-                <dt>服务支持</dt>
-                
-                <dd><a rel="nofollow" href="">售后政策</a></dd>
-                
-                <dd><a rel="nofollow" href="">自助服务</a></dd>
-                
-                <dd><a rel="nofollow" href="">相关下载</a></dd>
-                
-            </dl>
-                
-            <dl class="bzz2 fl">
-                <dt>线下门店</dt>
-                
-                <dd><a rel="nofollow" href="">小米之家</a></dd>
-                
-                <dd><a rel="nofollow" href="">服务网点</a></dd>
-                
-                <dd><a rel="nofollow" href="">线下专区</a></dd>
-                
-            </dl>
-                
-            <dl class="bzz2 fl ">
-                <dt>关于小米</dt>
-                
-                <dd><a rel="nofollow" href="">了解小米</a></dd>
-                
-                <dd><a rel="nofollow" href="">加入小米</a></dd>
-                
-                <dd><a rel="nofollow" href="">联系我们</a></dd>
-                
-            </dl>
-                
-            <dl class="bzz2 fl">
-                <dt>关注我们</dt>
-                
-                <dd><a rel="nofollow" href="">新浪微博</a></dd>
-                
-                <dd><a rel="nofollow" href="">小米部落</a></dd>
-                
-                <dd><a rel="nofollow" href="">官方微信</a></dd>
-                
-            </dl>
-                
-            <dl class="bzz2 fl">
-                <dt>特色服务</dt>
-                
-                <dd><a rel="nofollow" href="" target="_blank">F 码通道</a></dd>
-                
-                <dd><a rel="nofollow" href="" target="_blank">小米移动</a></dd>
-                
-                <dd><a rel="nofollow" href="" target="_blank">防伪查询</a></dd>
-                
-            </dl>
-                
-            <div class="bzz2 fl">
-                <p class="phone">400-100-5678</p>
-<p><span class="J_serviceTime-normal" style="
-">周一至周日 8:00-18:00</span>
-<span class="J_serviceTime-holiday" style="display:none;">2月7日至13日服务时间 9:00-18:00</span><br>（仅收市话费）</p>
-<a rel="nofollow" class="btn btn-line-primary btn-small" href=""><i class="iconfont"></i> 24小时在线客服</a>            </div>
+             
+            <?php endforeach ?>
+            </table>
+        <?php endif ?>
+    </div>
+</div>
 
 
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
@@ -432,7 +240,13 @@ $sql="
 
 
 
-     </div>
+
+
+
+
+
+
+
 
 
 
@@ -462,5 +276,3 @@ $sql="
     <script src="./public/js/bootstrap.min.js"></script>
   </body>
 </html>
-
-?>
