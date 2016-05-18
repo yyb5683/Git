@@ -113,7 +113,7 @@
     </div>
     <div id="menu4" class="panel-collapse collapse">
        <div class="list-group">
-        <a href="#" class="list-group-item">订单列表</a>
+        <a href="./goods/ddgl.php" target="main" class="list-group-item">订单列表</a>
     </div>
     </div>
   </div>

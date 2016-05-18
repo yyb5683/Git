@@ -2,18 +2,21 @@
  require './init.php';
 
 
-
+$user_id=$_SESSION['home']['id'];
+// p($user_id);
  
 //
              $sql="
-                     SELECT o.ordernum, o.id
-                     FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
-                     WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
+                     SELECT ordernum,id,status
+                     FROM ".PRE."order
+                     WHERE user_id=$user_id
+                    
             ";
 
             $list=query($link,$sql);
-            p($sql);
-            p($list);
+            // p($sql);
+            // p($list);
+
 
 
 
@@ -34,14 +37,19 @@
 
 
            
-           $sql="
-                    SELECT o.ordernum,i.iname, o.id,g.gname,o.status
-                    FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
-                    WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
-           ";
+           // $sql="
+           //          SELECT i.iname, o.id,g.gname
+           //          FROM ".PRE."order o,".PRE."image i,".PRE."ordergoods r,".PRE."goods g
+           //          WHERE o.id=r.order_id AND r.goods_id = i.goods_id AND cover=1 AND g.id=r.goods_id
+           // ";
 
-            $row=query($link,$sql);
-            p($row);
+           //  $row=query($link,$sql);
+           //  p($row);
+
+            // foreach( $row as $val ){
+            //   p($val['0']);
+            // }
+
 
 
 
@@ -119,157 +127,59 @@
               </div>
         </div><!--end feilei-->
 
-
-
-
-
-
-
-
         <div class="container">
-    <div class="row">
-        <h1>全部订单</h1>
-    </div>
+        <table class="table">
 
-    <div class="row">
-        <?php if (empty($row)): ?>
-            <h3>没有订单信息</h3>
-            <p><a href="./index.php">[继续购物]</a></p>
-        <?php else: ?>
-            <?php foreach ($row as $key =>$val):?>
+        <?php foreach($list as $values){
+           $id=$values['id'];?>
 
-            <table class="table">
-                <tr >
+           <tr>
+                  <th>商品</th>
+                  <th>订单号：<?php echo $values['ordernum']; ?></th>
+                  <th>订单id</th>
+                  <th>数量</th>
+                  <th>价格</th>
+                  <th>状态</th>
 
-                    <th class="col-md-4">订单号:<?php echo $val['ordernum']?></th>
-                    <th>商品名</th>
-                    <th>订单id:<?php echo $val['id']?></th>
-                    <th>状态</th>
-                    
-                </tr>
-                
-                <tr>
-                    <td>
-                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
-                            <img src="<?php echo @getpath(URL.'uploads/',$val['iname'],'b') ?>">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="./contentinfo.php?id=<?php echo @$key ?>&gname=<?php echo @$val['gname'] ?>">
-                            <?php echo @$val['gname'] ?>
-                        </a>
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-
-                        <?php echo $val['status']==0?'未发货':'已发货';?>
-
-
-                    </td>
-                
-                   
-                        
-                        
-                        
-                    
-                </tr>
-                
-                
-             
-            <?php endforeach ?>
-            </table>
-        <?php endif ?>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+           </tr>
         
+           <?php 
+           $sql="
+           SELECT og.id,og.goods_id,og.order_id,og.price,og.qty,g.gname,o.address,o.oname,o.status,g.stock,i.iname
+            FROM ".PRE."ordergoods og,".PRE."order o,".PRE."goods g,".PRE."image i
+            WHERE order_id=$id AND og.goods_id=g.id AND og.order_id=o.id AND og.goods_id = i.goods_id";
+        $list=query($link,$sql);
+        // p($sql);
+        // p($list);
+           ?>
+           <?php foreach ($list as $li){?>
+           <tr>
+                  <td> <img src="<?php echo getpath(URL.'uploads/',$li['iname'],'b') ?>"></td>
+                  <td><?php echo $li['gname'] ?></td>
+                  <td><?php echo $values['id']; ?></td>
+                  <td><?php echo $li['qty']; ?></td>
+                  <td><?php echo $li['price']; ?></td>
+                  <td><?php echo $li['status']; ?></td>
+           </tr>
 
+   
 
 
+        <?php } }?>
+ 
 
 
 
+        </table>
+        </div>
 
 
 
 
 
 
+      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-    
-    
     <!-- 此处引入jQuery --> 
     <script src="./public/js/jquery.min.js"></script>
     <!-- bootstrap.min.js必须放在JQ后面 -->

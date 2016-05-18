@@ -113,6 +113,18 @@
                exit;
                break;
 
+        case 'status':
+                $id= $_GET['id'];
+                $status = $_GET['states']==1?0:1;
+                $sql="UPDATE ".PRE."order SET `states`='$states' WHERE id=$id";
+                execute($link,$sql);
+
+                 header("location:".$_SERVER['HTTP_REFERER']);
+                 exit;
+                 break;
+
+
+
          //是否热销
          
         case 'is_hot':

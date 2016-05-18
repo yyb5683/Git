@@ -55,8 +55,12 @@
               <a href="./com/logout.php"> 退出 &nbsp &nbsp&nbsp&nbsp</a>
         </li>
 
+          <li>
+              <a href="./admin/login.php"> 进入后台&nbsp&nbsp&nbsp</a>
+        </li>
+
         <li>
-              <a href="#">个人中心&nbsp&nbsp&nbsp&nbsp</a>
+              <a href="./grzx.php">个人中心&nbsp&nbsp&nbsp&nbsp</a>
         </li>
         
         <li>
