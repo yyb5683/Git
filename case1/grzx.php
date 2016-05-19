@@ -80,7 +80,7 @@ $user_id=$_SESSION['home']['id'];
             <nav>
               <ul class="nave-top w">
                 
-                <li  class="yidong"><a href="#">小米网</a></li>
+                <li  class="yidong"><a href="./index.php">小米网</a></li>
                 <li><a href="#">MIUI</a></li>
                 <li><a href="#">米聊</a></li>
                 <li><a href="#">游戏</a></li>
@@ -101,37 +101,45 @@ $user_id=$_SESSION['home']['id'];
               </nav> <!-- end nav -->
 
 
-                <div class="fenlei w bb">
-            <div class="logo fl"><img src="./gerenzhongxin/2016-05-03_135219.png"></div>
+          <div class="fenlei w bb">
+              <div class="logo fl"><img src="./gerenzhongxin/2016-05-03_135219.png"></div>
               <div >
                 <ul class="nave-a ">
-                
-                <li class="aa"><a href="#">全部商品分类</a></li>
-                <li><a href="#">小米手机 </a></li>
-                <li><a href="#">红米</a></li>
-                <li><a href="#">平板</a></li>
-                <li><a href="#">电视</a></li>
-                <li><a href="#">盒子</a></li>
-                <li><a href="#">路由器</a></li>
-                <li><a href="#">智能硬件</a></li>
-                <li><a href="#">服务</a></li>
-                <li><a href="#">社区</a></li>
-              </div>
+                        <li class="aa"><a href="./grzx.php?a=qq"> <h2><button type="button" class="btn btn-info btn-lg">全部订单</button></h2></a></li>
+                        <li class="aa"><a href="./grzx.php?a=yy"> <h2><button type="button" class="btn btn-info btn-lg">已完成订单</button></h2></a></li>
+                        <li class="aa"><a href="./grzx.php?a=ww"> <h2><button type="button" class="btn btn-info btn-lg">未完成订单</button></h2></a></li>
+                        <li><a href="./grzx.php?a=gg"><h2><button type="button" class="btn btn-info btn-lg">个人信息</button></h2></a></li>
+                        <li><a href="./grzx.php?a=xx"><h2><button type="button" class="btn btn-info btn-lg">修改密码</button></h2></a></li>
+                        <li><a href="./grzx.php?a=ll"><h2><button type="button" class="btn btn-info btn-lg">兄弟连s47</button></h2></a></li>
+                        <li><a href="./grzx.php?a=aa"><h2><button type="button" class="btn btn-info btn-lg">A组</button></h2></a></li>
+                        
+                        <!-- <li><a href="#">电视</a></li>
+                        <li><a href="#">盒子</a></li>
+                        <li><a href="#">路由器</a></li>
+                        <li><a href="#">智能硬件</a></li>
+                        <li><a href="#">服务</a></li>
+                        <li><a href="#">社区</a></li> -->
+          </div>
               
-              <div class="kuang1 fl">
-         <form>
-         <input class="kuang" type="text" name="kuang"placeholder="小米手机4c" >
+          <div class="kuang1 fl">
+                <!--   <form>
+                        <input class="kuang" type="text" name="kuang"placeholder="小米手机4c" >
          <!-- <input class="sb" type="submit" value=""> -->
-   
-        </form>
-              </div>
+                  <!-- </form> --> 
+          </div>
         </div><!--end feilei-->
 
         <div class="container">
-        <table class="table">
+                <table class="table">
 
-        <?php foreach($list as $values){
-           $id=$values['id'];?>
+            <?php 
+             // p($_GET);
+            @$a=$_GET['a'];
+             if ($a=='qq') {
+               # code...
+            
+            foreach($list as $values){
+                    $id=$values['id'];?>
 
            <tr>
                   <th>商品</th>
@@ -144,34 +152,153 @@ $user_id=$_SESSION['home']['id'];
            </tr>
         
            <?php 
-           $sql="
+                  $sql="
            SELECT og.id,og.goods_id,og.order_id,og.price,og.qty,g.gname,o.address,o.oname,o.status,g.stock,i.iname
             FROM ".PRE."ordergoods og,".PRE."order o,".PRE."goods g,".PRE."image i
             WHERE order_id=$id AND og.goods_id=g.id AND og.order_id=o.id AND og.goods_id = i.goods_id";
-        $list=query($link,$sql);
+                  $list=query($link,$sql);
         // p($sql);
         // p($list);
            ?>
-           <?php foreach ($list as $li){?>
-           <tr>
-                  <td> <img src="<?php echo getpath(URL.'uploads/',$li['iname'],'b') ?>"></td>
-                  <td><?php echo $li['gname'] ?></td>
-                  <td><?php echo $values['id']; ?></td>
-                  <td><?php echo $li['qty']; ?></td>
-                  <td><?php echo $li['price']; ?></td>
-                  <td><?php echo $li['status']; ?></td>
-           </tr>
+           <?php 
+
+          
+           foreach ($list as $li){?>
+                <tr>
+                      <td> <img src="<?php echo getpath(URL.'uploads/',$li['iname'],'b') ?>"></td>
+                      <td><?php echo $li['gname'] ?></td>
+                      <td><?php echo $values['id']; ?></td>
+                      <td><?php echo $li['qty']; ?></td>
+                      <td><?php echo $li['price']; ?></td>
+                      <td>
+                                <?php 
+
+                                $status=$li['status'];
+
+                                switch($status){
+
+                                  case '0': 
+
+                                  echo '未发货';echo '<br>';
+
+                                  echo '<a href="./action1.php?a=qu&id='.$id.'&status=3">取消订单';
+
+                                  break;
+
+                                  case '1':
+
+                                  echo '已发货';
+
+                                  break;
+
+                                  case '2':
+
+                                  echo '订单已完成';
+
+                                  break;
+
+                                  case '3':
+
+                                  echo '订单已撤销';
+
+                                  break;
+                                }
+
+
+                                ?>
+                        <!--       <?php echo $li['status']==0?'<button type="button" class="btn btn-info">取消订单</button>':'<button type="button" class="btn btn-info">已发货</button>'; ?>
+ -->
+
+
+
+
+
+
+                      </td>
+                </tr>
 
    
 
 
-        <?php } }?>
+        <?php } }  }
+        if ($a=='xx') {
+       
+            echo '<div class="conatiner">';
+echo '<div calss="row mt20"></div>';
+
+    
+    echo '<h2>重置密码</h2>';
+
+
+
+
+
+   echo '<form action="./com/mimado.php" method="post" class="form-horizontal col-md-4 col-md-offset-4">';
+
+        echo '<div class="form-group">';
+            echo '<div class="col-md-7">';
+                echo '用户名:';
+                echo '<input type="text" name="name" class="form-control input-lg" placeholder="请输入用户名..">';
+            echo '</div>';
+        echo '</div>';
+
+        echo '<div class="form-group">';
+          echo '<div class="col-md-7">';
+                echo '新的密码:';
+                echo '<input type="password" name="pwd" class="form-control input-lg" placeholder="请输入新密码">';
+                echo '<span class="xing">* 由4-32位组成</span>';
+
+            echo '</div>';
+
+
+            
+
+
+            echo '<div class="col-md-7">';
+                echo '邮箱地址:';
+                echo '<input type="text" name="email" class="form-control input-lg" placeholder="请输入邮箱地址"></div>';
+          
+            echo '<div class="col-md-7">';
+                echo '手机号:';
+                echo '<input type="text" name="tel" class="form-control input-lg" placeholder="请输入手机号">';
+                echo '<span class="xing">* 请输入合法的手机号</span>';
+            echo '</div>';
+        echo '</div>';
+
+
+        
+
+      echo '<div class="form-group">';
+        echo '<div class="col-md-7">';
+          echo '<button type="submit" class="btn btn-primary btn-lg btn-block">密码重置</button>';
+        
+        echo '</div>';
+      echo '</div>';
+
+    echo '</form>';
+  
+
+
+
+
+echo '</div>';
+
+
+
+        }if($a=='ll'){
+
+            echo '<img src="./imgs/2016-05-19_205043.png">';
+
+        }
+        ?>
  
 
 
 
-        </table>
+                </table>
+
         </div>
+
 
 
 
