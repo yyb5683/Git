@@ -59,9 +59,9 @@
         库存:
         <input type="text" name="stock" placeholder="库存"  value="<?php echo $row['stock']?>"><br><br>
          销量:
-        <input type="text" name="stock" placeholder="库存"  value="<?php echo $row['sale']?>" readonly><br><br>
+        <input type="text" name="sale" placeholder="销量"  value="<?php echo $row['sale']?>" readonly><br><br>
          赞量:
-        <input type="text" name="stock" placeholder="库存"  value="<?php echo $row['zan']?>" readonly><br><br>
+        <input type="text" name="zan" placeholder="赞"  value="<?php echo $row['zan']?>" readonly><br><br>
         
         
 

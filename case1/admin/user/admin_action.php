@@ -23,9 +23,10 @@
                 $set .= "`$key`='$val',";
             }
             $set = rtrim($set,',');
-            $sql = "UPDATE s47_admin_user SET $set WHERE `id`='$id'";
+            $sql = "UPDATE ".PRE."admin_user SET $set WHERE `id`='$id'";
            
              $id = execute($link,$sql);
+            
 
             if($id){
                  admin_redirect('成功编辑ID为:'.$id, './index2.php',10);
@@ -64,7 +65,7 @@
             $values = rtrim($values,',');
 
             //5
-            $sql = "INSERT INTO s47_admin_user ($keys) VALUES($values)";
+            $sql = "INSERT INTO ".PRE."admin_user ($keys) VALUES($values)";
             $id = execute($link,$sql);
             if ($id) {
                 admin_redirect('添加成功 ID:'.$id, './index2.php',10);

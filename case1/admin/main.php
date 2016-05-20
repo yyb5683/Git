@@ -23,8 +23,8 @@
         <h2 id="yyb" class="col-md-12">尹义斌的商城后台管理系统</h2>
         <p id="tj" class="col-md-12">
             <a href="./user/add.php" class="btn btn-primary">添加用户</a>
-            <a href="#" class="btn btn-success">添加商品</a>
-            <a href="#" class="btn btn-info">查看商品</a>
+            <a href="./goods/add.php" target="main" class="btn btn-success">添加商品</a>
+            <a href="./goods/index.php" target="main" class="btn btn-info">查看商品</a>
             <a href="#" class="btn btn-warning">处理订单</a>
             <a href="http://www.baidu.com" class="btn btn-default">我要百度</a>
         </p>
@@ -42,7 +42,9 @@
 
         <div class=" col-md-6">
             <div class="panel panel-primary">
+            
               <div class="panel-heading">订单统计</div>
+
               <div class="panel-body">
                 GD
               </div>

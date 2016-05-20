@@ -18,9 +18,11 @@
     $pwd = md5($_POST['pwd']);
 
     //sql
-    $sql = "SELECT `id`,`name`,`pwd` FROM ".PRE."admin_user WHERE `name`='$name'";
+    $sql = "SELECT `id`,`name`,`pwd`,`type` FROM ".PRE."admin_user WHERE `name`='$name'";
 
     $row = query($link, $sql);
+    // p($row);
+    // exit;
     
     if ($row) {
         //如果有数据,说明用户存在

@@ -79,6 +79,7 @@ $user_id=$_SESSION['home']['id'];
   <body>
             <nav>
               <ul class="nave-top w">
+
                 
                 <li  class="yidong"><a href="./index.php">小米网</a></li>
                 <li><a href="#">MIUI</a></li>
@@ -102,7 +103,7 @@ $user_id=$_SESSION['home']['id'];
 
 
           <div class="fenlei w bb">
-              <div class="logo fl"><img src="./gerenzhongxin/2016-05-03_135219.png"></div>
+              <div class="logo fl"><img src="./imgs/1312_1_1357479179_3.jpg"></div>
               <div >
                 <ul class="nave-a ">
                         <li class="aa"><a href="./grzx.php?a=qq"> <h2><button type="button" class="btn btn-info btn-lg">全部订单</button></h2></a></li>
@@ -135,6 +136,7 @@ $user_id=$_SESSION['home']['id'];
             <?php 
              // p($_GET);
             @$a=$_GET['a'];
+
              if ($a=='qq') {
                # code...
             
@@ -187,7 +189,8 @@ $user_id=$_SESSION['home']['id'];
 
                                   case '1':
 
-                                  echo '已发货';
+                                  echo '已发货<br>';
+                                  echo '<a href="./action1.php?a=shou&id='.$id.'&status=2"><button type="button" class="btn btn-warning">确定收货</button>';
 
                                   break;
 
@@ -224,7 +227,7 @@ $user_id=$_SESSION['home']['id'];
         if ($a=='xx') {
        
             echo '<div class="conatiner">';
-echo '<div calss="row mt20"></div>';
+echo '<div calss="row mt20"></div><br><br><br>';
 
     
     echo '<h2>重置密码</h2>';
@@ -289,23 +292,258 @@ echo '</div>';
 
             echo '<img src="./imgs/2016-05-19_205043.png">';
 
-        }
-        ?>
+        }if($a=='gg') {
+          // p($_SESSION['home']);
+          $id=$_SESSION['home']['id'];
+          // exit;
+          // $id=
+           $sql="SELECT `id`,`name`,`pwd`,`tel`,`sex`,`email`,`logincount` FROM ".PRE."user WHERE `id`='$id'";
+           $list=query($link,$sql);
+           // p($sql);
+           // p($list);
+         
+       
+                foreach($list as $val ){
+          
+           
+              echo '<form class="form-inline " action="./bj.php?a=bj" method="post">';
+
+              echo '<div class="form-group"><br><br><br><br>';
+               echo '<input type="hidden" name="id" value="'.$val['id'].'">';
+              echo '<label for="exampleInputName2">姓名:</label>';
+              echo '<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" value="'.@$val['name'].'"></div>';
+              echo '<div class="form-group">';
+              echo '<label for="exampleInputEmail2">电话</label>';
+echo '<input type="text" class="form-control" id="exampleInputEmail2" placeholder="请输入合法的手机号" value="'.$val['tel'].'"></div>';
+              echo '<label for="exampleInputName2">邮箱:</label>';
+              echo '<input type="text" class="form-control" id="exampleInputName2" placeholder="Jjane.doe@example.com" value="'.$val['email'].'"></div>';
+              
+              echo '<div class="radio">';
+              echo '<label>';
+              echo '<input type="radio" name="optionsRadios" id="optionsRadios1" value="'.$val['sex'].'==1?"checked>';
+              echo '男';
+              echo '</label>';
+              echo '</div>';
+              echo '<div class="radio">';
+              echo '<label>';
+              echo '<input type="radio" name="optionsRadios" id="optionsRadios2" value="'.$val['sex'].'==0?"checked>';
+              echo '女';  
+              echo '</label>';
+              echo '</div>';
+              echo '<div class="radio">';
+              echo '<label>';
+              echo '<input type="radio" name="optionsRadios" id="optionsRadios3" value="'.$val['sex'].'==2?" checked>';
+              echo '保密';
+              echo '</label>';
+              echo '</div>';
+
+              echo '<a class="btn btn-success" href="./grzx.php?a=xx">去修改密码</a>';echo '<button type="submit" class="btn btn-default">编辑可修改资料</button>';
+              echo '</form>';
+
+              }
+                 }else{
+                  if($a=='yy'){
+
+                     $sql="
+                     SELECT ordernum,id
+                     FROM ".PRE."order
+                     WHERE user_id=$user_id AND status=2
+                    ";
+                     $list=query($link,$sql);
+                     // P($list);
+
+                     if(empty($list)){
+                      echo '<h2 class="text-center">暂无完成的订单</h2>';
+                     }else{
+
+                      foreach ($list as $val) {
+                        $id = $val['id'];
+                        echo '<table class="table table-bordered table-hover h4">';
+                            echo '<tr>';
+
+                                echo '<th class="col-md-1">商品图片:</th>';
+                                echo '<th class="col-md-2">订单号:'.$val['ordernum'].'</th>';
+                                echo '<th class="col-md-1">商品名</th>';
+                                echo '<th class="col-md-1">价格</th>';
+                                echo '<th class="col-md-1">数量</th>';
+                                echo '<th class="col-md-1">收件人</th>';
+                                echo '<th class="col-md-1">状态</th>';
+                               
+
+                            echo '<tr>';
+
+
+                            $sql="
+           SELECT og.id,og.goods_id,og.order_id,og.price,og.qty,g.gname,o.address,o.oname,o.status,g.stock,i.iname
+            FROM ".PRE."ordergoods og,".PRE."order o,".PRE."goods g,".PRE."image i
+            WHERE order_id=$id AND og.goods_id=g.id AND og.order_id=o.id AND og.goods_id = i.goods_id";
+                $row=query($link,$sql);
+
+                // p($row);
+
+
+                      foreach ($row as $v){
+                        echo '<tr>';
+
+                                  echo '<td colspan="2"><img src="'.getpath(URL.'uploads/',$v['iname'],'b').'"></td>';
+                                  echo '<td>'.$v['gname'].'</td>';
+                                  echo '<td>'.$v['price'].'</td>';
+                                  echo '<td>'.$v['qty'].'</td>';
+                                  echo '<td>'.$v['oname'].'</td>';
+                                  echo '<td>';
+
+                                    $status=$v['status'];
+
+                                switch($status){
+
+                                  case '0': 
+
+                                  echo '未发货';echo '<br>';
+
+                                  echo '<a href="./action1.php?a=qu&id='.$v.'&status=3">取消订单';
+
+                                  break;
+
+                                  case '1':
+
+                                  echo '已发货<br>';
+                                  echo '<a href="./action1.php?a=shou&id='.$v.'&status=2"><button type="button" class="btn btn-warning">确定收货</button>';
+
+                                  break;
+
+                                  case '2':
+
+                                  echo '订单已完成';
+
+                                  break;
+
+                                  case '3':
+
+                                  echo '订单已撤销';
+
+                                  break;
+                                }
+
+
+
+
+                                  echo '</td>';
+                                  
+
+                        echo '</tr>';
+                      }
+
+
+                      echo '</table>';
+
+                      }
+
+
+                     }
+
+
+                  }
+                 }if ($a=='ww') {
+
+                    $sql="
+                     SELECT ordernum,id
+                     FROM ".PRE."order
+                     WHERE user_id=$user_id AND status=0
+                    ";
+                    // p($sql);
+                     $list=query($link,$sql);
+                     // p($list);
+
+                       if(empty($list)){
+                      echo '<h2 class="text-center">暂无未完成的订单</h2>';
+                     }else{
+                      foreach ($list as $values){
+
+                             $id = $values['id'];
+
+                     echo '<table class="table table-bordered table-hover h4">';
+                            echo '<tr>';
+
+                                echo '<th class="col-md-1">商品图片:</th>';
+                                echo '<th class="col-md-2">订单号:'.$values['ordernum'].'</th>';
+                                echo '<th class="col-md-1">商品名</th>';
+                                echo '<th class="col-md-1">价格</th>';
+                                echo '<th class="col-md-1">数量</th>';
+                                echo '<th class="col-md-1">收件人</th>';
+                                echo '<th class="col-md-1">状态</th>';
+                               
+
+                            echo '</tr>';
+
+
+                            $sql="
+           SELECT og.id,og.goods_id,og.order_id,og.price,og.qty,g.gname,o.address,o.oname,o.status,g.stock,i.iname
+            FROM ".PRE."ordergoods og,".PRE."order o,".PRE."goods g,".PRE."image i
+            WHERE order_id=$id AND og.goods_id=g.id AND og.order_id=o.id AND og.goods_id = i.goods_id";
+                $row=query($link,$sql);
+                           foreach ($row as $li){
+                                echo '<tr>';
+
+                                      echo '<td colspan="2"><img src="'.getpath(URL.'uploads/',$li['iname'],'b').'"></td>';
+                                      echo '<td>'.$li['gname'].'</td>';
+                                      echo '<td>'.$li['price'].'</td>';
+                                      echo '<td>'.$li['qty'].'</td>';
+                                      echo '<td>'.$li['oname'].'</td>';
+                                      echo '<td>';
+
+                                      $status=$li['status'];
+
+                                switch($status){
+
+                                  case '0': 
+
+                                  echo '未发货';echo '<br>';
+
+                                  echo '<a href="./action1.php?a=qu&id='.$id.'&status=3">取消订单';
+
+                                  break;
+
+                                  case '1':
+
+                                  echo '已发货<br>';
+                                  echo '<a href="./action1.php?a=shou&id='.$id.'&status=2"><button type="button" class="btn btn-warning">确定收货</button>';
+
+                                  break;
+
+                                  case '2':
+
+                                  echo '订单已完成';
+
+                                  break;
+
+                                  case '3':
+
+                                  echo '订单已撤销';
+
+                                  break;
+                                }
+
+
+
+                                      echo'</td>';
+                                  
+
+                                 echo '</tr>';
+
+                          }
+                            echo '</table>';
+                      }
  
+                    }
 
 
+                  }
+  
+        ?>
 
                 </table>
 
         </div>
-
-
-
-
-
-
-
-      
 
     <!-- 此处引入jQuery --> 
     <script src="./public/js/jquery.min.js"></script>

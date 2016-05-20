@@ -1,10 +1,14 @@
 <?php 
     require '../init.php';
 
+    // p($_SESSION);
+    // exit;
+
 $type=$_SESSION['admin']['name'];
     // echo '<pre>';
     // print_r($type);
     // $type['name'];
+    // exit;
 
 
     // exit;
@@ -146,33 +150,38 @@ $type=$_SESSION['admin']['name'];
                         
                    
                         <td><?php echo $val['tel'] ?></td>
-                        <td><?php echo $val['type'] ?></td>
-                   
-                 
+                        <td><?php echo $val['type']==0?'最高权限':'普通用户';?></td>
+
                         <td>
+                            <?php
+                                if($_SESSION['admin']['type']==0){
+                                    if($_SESSION['admin']['type']==$val['type']){
 
-                          <?php if( ($val['type']) !=='0'): ?>
+                                        echo '<a href="./admin_action.php?a=del">编辑</a>';
 
-                            <a href="./admin_edit.php?id=<?php echo $val['id'] ?>">编辑</a>
-                            <a href="./admin_action.php?a=del&id=<?php echo $val['id'] ?>">删除</a>
-                         <?php else: ?>
+                                    }else{
+                                        echo '<a href="./admin_action.php?a=edit">编辑</a>';
+                                        echo '<a href="./admin_action.php?a=del"删除</a>';
+                                    }
 
-                            
+                                   
 
-
-                         
-                             <a href="./admin_edit.php?id=<?php echo $val['id'] ?>"></a>
-                             <a href="./admin_action.php?a=del&id=<?php echo $val['id'] ?>"></a>
-                        
-
-                        
+                             
+                                }else{
+                                    if($_SESSION['admin']['name']==$val['name']){
+                                        echo '<a href="./admin_action.php?a=edit&id='.$val['id'].'">编辑</td>';
 
 
-                         <?php endif ?>
+                                    }else{
+                                        echo '权限不足';
+                                    }
+                                }
 
+
+                            ?>
                         </td>
-               
-
+                        
+ 
                     </tr>
 
                 <?php endforeach ?>

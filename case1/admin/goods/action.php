@@ -179,11 +179,15 @@
             break;
 
             case 'edit':
+            // p($_POST);
+            // exit;
 
             $id=$_POST['id'];
 
 
+
             echo '正在编辑';
+
             $set = '';
             foreach ($_POST as $key => $val){
                 $set .= "`$key`='$val',";

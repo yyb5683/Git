@@ -134,6 +134,21 @@
                   exit;
 
                   break;
+        case 'shou':
+
+                    $id=$_GET['id'];
+
+                    $status = $_GET['status'];
+
+                    $sql="UPDATE ".PRE."order SET `status`='$status' WHERE id=$id";
+
+                    execute($link,$sql);
+
+                    header("location:".$_SERVER['HTTP_REFERER']);
+
+                    exit;
+
+                    break;
 
 
 
