@@ -2,9 +2,67 @@
     require '../init.php';
 
 
+    $where = '';
+    $urlname = '';
+    $name = '';
+    
+    if (isset($_GET['name']) && !empty($_GET['name'])) {
+        $name = $_GET['name'];
+        $where = "WHERE `name` LIKE '%$name%'";//SQL查询条件
+        $urlname = "&name=$name";//url的参数
+    }
 
-      $sql="SELECT ordernum,id,status FROM ".PRE."order";
+    //分页开始
+    //总记录数
+    $sql = "SELECT count(*) total FROM s47_admin_user $where";
+    $row = query($link, $sql);
+    $total = $row[0]['total'];
+    //每页显示数
+    $num = 5;
+    //总页数
+    $allpage = ceil($total / $num);
+
+    //获取页码
+    // p($_GET);
+    // exit;
+    $page = isset($_GET['admin_page'])?(int)$_GET['admin_page']:1;
+    //限制页码范围
+    //页码:不能小于1 不能大于$allpage
+    $page = max(1,$page);//[0,1]
+    $page = min($page,$allpage);//[接收的页数,总页数]
+
+    //获取偏移量
+    $offset = ($page-1) * $num;
+    //获取上一夜/下一夜
+    $prev = $page - 1;
+    $next = $page + 1;
+
+    //控制数组页码的显示
+    $start = max($page - 2, 1);
+    $end = min($page + 2, $allpage);
+
+    $pageurl = 'ddgl.php';
+    //产生数字链接
+    $num_link = '';
+    for ($i = $start; $i <= $end; $i++) {
+        if ($page == $i) {
+            $num_link .= '<li class="active"><a href="./'.$pageurl.'?page='.$i.$urlname.'">'.$i.'</a></li>';
+            continue;
+        }
+        $num_link .= '<li><a href="./'.$pageurl.'?page='.$i.$urlname.'">'.$i.'</a></li>';
+    }
+    echo '<hr>';
+
+    $sql="SELECT ordernum,id,status FROM ".PRE."order $where LIMIT $offset,$num";
         $list = query($link ,$sql);
+
+
+        //显示当前页查询到的记录数量
+        $rows = mysqli_affected_rows($link);
+        // p($rows);
+        // exit;
+        
+
 
 
 
@@ -33,7 +91,7 @@
         <tr>
         <td><a href="./ddgl.php?a=qq"><button type="button" class="btn btn btn-warning btn-lg">全部订单</button></a></td>
         <td><a href="./ddgl.php?a=yy"><button type="button" class="btn btn-info btn-lg">已完成订单</button></a></td>
-        <td><a href="./ddgl.php?a=ww"><button type="button" class="btn btn-success btn-lg">未完成订单</button></a></td>
+        <td><a href="./ddgl.php?a=ww"><button type="button" class="btn btn-success btn-lg">未完成订单</button></a></td><br>
         
 
         </tr>
@@ -79,7 +137,7 @@
                                 <td><?php echo $li['price'] ?></td>
                                 <td><?php echo $li['qty'] ?></td>
                                 <td><?php echo $li['oname'] ?></td>
-                                <td> 
+                                <td>
                                 <?php 
                                   // echo $id;
                                   // exit;
@@ -95,11 +153,13 @@
 
                                         break;
                                         case '1':
+                                         echo '发货中<br><br>';
                                         echo '<a href="./action1.php?a=fa&id='.$id.'&status=2"><button type="button" class="btn btn-success">点击强制收货</button></a>';echo '<br>';
-                                        echo '<button type="button" class="btn btn-warning">发货中</button>';
+                                       
                                         break;
                                         case '2':
-                                        echo '<button type="button" class="btn btn-info">订单已完成</button>';
+                                        echo '订单已完成<br><br>';
+                                        echo ' <a href="">查看评论</a>';
                                         break;
                                         case '3':
                                         echo '<button type="button" class="btn btn-primary">订单已取消</button>';
@@ -270,14 +330,15 @@
 
 
                                                                                             break;
-                                                                                            case '1':
+                                                                                case '1':
                                                                                             echo '<a href="./action1.php?a=fa&id='.$id.'&status=2"><button type="button" class="btn btn-success">点击强制收货</button></a>';echo '<br>';
                                                                                             echo '<button type="button" class="btn btn-warning">发货中</button>';
                                                                                             break;
-                                                                                            case '2':
+                                                                                case '2':
                                                                                             echo '<button type="button" class="btn btn-info">订单已完成</button>';
+                                                                                        
                                                                                             break;
-                                                                                            case '3':
+                                                                                case '3':
                                                                                             echo '<button type="button" class="btn btn-primary">订单已取消</button>';
                                     
 
@@ -307,6 +368,8 @@
                
                 </table>
 
+                <?php require ADMIN_PATH.'./goods/page.php';?>
+
 
             </div>
         
@@ -322,4 +385,3 @@
 </html>
 
         
-

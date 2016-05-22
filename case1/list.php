@@ -41,8 +41,11 @@
     $sql = "SELECT cname,concat(path,id,',') bpath FROM ".PRE."category WHERE id='$cate_id'";
 
     $row1 = query($link, $sql);
+    // p($row1);
     $cname = $row1[0]['cname'];
+    // p($cname);
     $bpath = $row1[0]['bpath'];
+     // p($bpat);exit;
 
     // //2.按照当前的bpath,查询出所有的子孙的ID
     // $sql = "SELECT id FROM ".PRE."category WHERE path LIKE '$bpath%'";
@@ -75,13 +78,18 @@
     WHERE g.id = i.goods_id AND i.cover=1 AND g.state=1 AND cate_id in(SELECT id FROM ".PRE."category WHERE path LIKE '$bpath%')";
     $list = query($link, $sql);
     
-    // p($list);exit;
+    // p($list);
+    // exit;
     
     
     
     //以下请自重! 
     $sql = "SELECT `id`,`cname`,`path` FROM ".PRE."category WHERE `display`='1' order by path";
     $c_list = query($link,$sql);
+    // p($c_list);
+    // exit;
+    // 
+    
  ?>
 
 <!DOCTYPE html>
@@ -109,14 +117,14 @@
                 <li class="yidong"><a href="./index.php">首页</a></li>
 
                 <li><a href="./index.php">小米网</a></li>
-                <li><a href="#">MIUI</a></li>
-                <li><a href="#">米聊</a></li>
-                <li><a href="#">游戏</a></li>
-                <li><a href="#">多看阅读</a></li>
-                <li><a href="#">云服务</a></li>
-                <li><a href="#">小米移动版</a></li>
-                <li><a href="#">问题反馈</a></li>
-                <li><a href="#">Select Region</a></li>
+                <li><a href="./404.html">MIUI</a></li>
+                <li><a href="./404.html">米聊</a></li>
+                <li><a href="./404.html">游戏</a></li>
+                <li><a href="./404.html">多看阅读</a></li>
+                <li><a href="./404.html">云服务</a></li>
+                <li><a href="./404.html">小米移动版</a></li>
+                <li><a href="./404.html">问题反馈</a></li>
+                <li><a href="./404.html">Select Region</a></li>
               
                  <div class="denglu fr">登录 | 注册</div>  
 
@@ -132,7 +140,7 @@
                 <div >
                 <ul class="nave-a ">
                 
-                <li class="aa"><a href="./list.php">全部商品分类</a></li>
+                <li class="aa"><a href="./index.php">全部商品分类</a></li>
 
                 <li>
                 <?php if (!empty($c_list)): ?>
@@ -141,6 +149,7 @@
                 <li><a href="./list.php?cate_id=<?php echo $val['id'] ?>"><?php echo $val['cname'] ?></a></li>
                 <?php endforeach ?>
                 <?php endif ?>
+
       
                 </li>
 
@@ -174,14 +183,27 @@
                 <ul class="nave-b">
                 
                 <li class="cc"><a href="#">选购手机&nbsp·&nbsp</a></li>
-                 <li><a href="#">小米手机5 </a></li>
+
+                <?php $sql = "
+                                SELECT i.iname, g.gname, g.price, g.zan,g.msg,g.id
+                                FROM ".PRE."goods g, ".PRE."image i
+                                WHERE g.id = i.goods_id AND i.cover=1 AND g.state=1 AND cate_id in(SELECT id FROM ".PRE."category WHERE path LIKE '$bpath%')";
+                                $list = query($link, $sql);?>
+                <?php if (!empty($list)): ?>
+
+                <?php foreach ($list as $v): ?>
+                <li><a href=""><?php echo $v['gname'] ?></a></li>
+                <?php endforeach ?>
+                <?php endif ?>
+
+                 <!-- <li><a href="#">小米手机5 </a></li>
                 <li><a href="#">小米Note </a></li>
                 <li><a href="#">红米手机4s</a></li>
                 <li><a href="#">小米4c</a></li>
                 <li><a href="#">小米手机4</a></li>
                 <li><a href="#">红米Not3</a></li>
                 <li><a href="#">小米平板</a></li>
-                <li><a href="#">手机对比</a></li>
+                <li><a href="#">手机对比</a></li> -->
                 
               </div>
 

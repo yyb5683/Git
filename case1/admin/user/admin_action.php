@@ -14,9 +14,12 @@
     switch ($a) {
 
         case 'edit':
+        // p($_POST);
             
           
             $id = $_POST['id'];
+            // p($id);
+            // exit;
             echo '正在编辑ID为'.$id.'的家伙..<br>';
             $set = '';
             foreach ($_POST as $key => $val) {

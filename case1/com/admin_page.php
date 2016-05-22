@@ -1,7 +1,7 @@
 <?php 
     echo "<span>共{$allpage}页,当前第{$page}页,本页显示{$rows}条记录,共{$total}条记录</span>";
     //判断是否设置了分页的文件名,如果未设置,默认为index.php
-    $pageurl = isset($pageurl)?$pageurl:'index.php';
+    $pageurl = isset($pageurl)?$pageurl:'index2.php';
  ?>
 
 <nav>
@@ -32,7 +32,7 @@
         <li>
             <form class="fengo" action="" method="get">
                 <input type="hidden" name="name" value="<?php echo $name ?>">
-                <select name="page">
+                <select name="admin_page">
                     <?php 
                     for ($i=1; $i <= $allpage; $i++) { 
                         echo '<option value="'.$i.'">'.$i.'</option>';

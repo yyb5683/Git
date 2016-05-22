@@ -1,7 +1,8 @@
 <?php
     require './init.php'; 
     
-    // 
+// p($_SESSION['cart']);
+// exit;
 
 if(empty($_SESSION['home'])){
      redirect('您还未登录请登录.....', URL.'login.php',1);
@@ -149,6 +150,12 @@ if(empty($_SESSION['home'])){
                         $_SESSION['order']['address'] = $_POST['address'];
                         $_SESSION['order']['allprice'] = $allprice;
                         p( $_SESSION['order']);
+
+
+
+
+
+                        
 
                        
                 }

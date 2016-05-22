@@ -2,6 +2,7 @@
  require './init.php';
 
 
+
 $user_id=$_SESSION['home']['id'];
 // p($user_id);
  
@@ -135,7 +136,7 @@ $user_id=$_SESSION['home']['id'];
 
             <?php 
              // p($_GET);
-            @$a=$_GET['a'];
+            $a=$_GET['a'];
 
              if ($a=='qq') {
                # code...
@@ -311,28 +312,28 @@ echo '</div>';
               echo '<div class="form-group"><br><br><br><br>';
                echo '<input type="hidden" name="id" value="'.$val['id'].'">';
               echo '<label for="exampleInputName2">姓名:</label>';
-              echo '<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" value="'.@$val['name'].'"></div>';
+              echo '<input type="text" class="form-control"name="name" placeholder="Jane Doe" value="'.@$val['name'].'"></div>';
               echo '<div class="form-group">';
               echo '<label for="exampleInputEmail2">电话</label>';
-echo '<input type="text" class="form-control" id="exampleInputEmail2" placeholder="请输入合法的手机号" value="'.$val['tel'].'"></div>';
+echo '<input type="text" class="form-control" name="tel" placeholder="请输入合法的手机号" value="'.$val['tel'].'"></div>';
               echo '<label for="exampleInputName2">邮箱:</label>';
-              echo '<input type="text" class="form-control" id="exampleInputName2" placeholder="Jjane.doe@example.com" value="'.$val['email'].'"></div>';
+              echo '<input type="text" class="form-control" name="email" placeholder="Jjane.doe@example.com" value="'.$val['email'].'"></div>';
               
               echo '<div class="radio">';
               echo '<label>';
-              echo '<input type="radio" name="optionsRadios" id="optionsRadios1" value="'.$val['sex'].'==1?"checked>';
+              echo '<input type="radio" name="sex" value=1 checked='.($val['sex']==1 ? '"checked"':'').'>';
               echo '男';
               echo '</label>';
               echo '</div>';
               echo '<div class="radio">';
               echo '<label>';
-              echo '<input type="radio" name="optionsRadios" id="optionsRadios2" value="'.$val['sex'].'==0?"checked>';
+              echo '<input type="radio" name="sex" value=0 checked='.($val['sex']==0 ? '"checked"':'').'>';
               echo '女';  
               echo '</label>';
               echo '</div>';
               echo '<div class="radio">';
               echo '<label>';
-              echo '<input type="radio" name="optionsRadios" id="optionsRadios3" value="'.$val['sex'].'==2?" checked>';
+              echo '<input type="radio" name="sex" value=2 checked='.($val['sex']==2 ? '"checked"':'').'>';
               echo '保密';
               echo '</label>';
               echo '</div>';

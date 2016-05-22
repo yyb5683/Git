@@ -20,7 +20,7 @@
     $pwd = md5($_POST['pwd']);
 
     //sql
-    $sql = "SELECT `id`,`name`,`pwd` FROM ".PRE."user WHERE `name`='$name'";
+    $sql = "SELECT `id`,`name`,`pwd`,`logincount`FROM ".PRE."user WHERE `name`='$name'";
 
     $row = query($link, $sql);
 
@@ -33,19 +33,20 @@
         $row = $row[0];
         // p($row);
         //如果有数据,就进行密码比对
-        if ($row['pwd'] == $pwd) {
+        if (@$row['pwd'] == $pwd) {
             //密码一致,登录成功了!清除密码和就验证码
             unset($row['pwd']);
-            unset($_SESSION['vcode']);
+            unset($_SESSION['vcode']);@
 
             //将用户的ID,name放在session
             $_SESSION['home'] = $row;
-            // $id =$_SESSION['home']['id'];
-            // $arr = $_SESSION['home']['logincount']+1;
-            // $sql = "UPDATE ".PRE." user SET `logincount`=$arr WHERE `id`='$id'";
-            // $r = mysqli_query($link,$sqli);
+            $id =$_SESSION['home']['id'];
+            $arr = $_SESSION['home']['logincount']+1;
+            $sql = "UPDATE ".PRE."user SET `logincount`='$arr' WHERE `id`='$id'";
 
-            redirect('登录成功!',URL.'index.php',1);
+            $r=execute($link,$sql);
+         
+            redirect('登录成功!',URL.'index.php',10000);
             exit;
         }else{
             //密码不一致

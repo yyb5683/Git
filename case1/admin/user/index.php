@@ -1,5 +1,7 @@
 <?php 
     require '../init.php';
+    // P($_SESSION);
+    // exit;
 
     $where = '';
     $urlname = '';
@@ -149,12 +151,15 @@
                         <td><?php echo $val['tel'] ?></td>
                         <td><?php echo $val['email'] ?></td>
                         <td><?php echo $val['logincount'] ?></td>
+
+                        
                         <td>
                             <a href="./edit.php?id=<?php echo $val['id'] ?>">编辑</a>
                             <a href="./action.php?a=del&id=<?php echo $val['id'] ?>">删除</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
+      
                 <?php endif ?>
             </table>
             <?php require ADMIN_PATH.'../com/page.php'; ?>

@@ -60,7 +60,7 @@
         </li>
 
         <li>
-              <a href="./grzx.php">个人中心&nbsp&nbsp&nbsp&nbsp</a>
+              <a href="./grzx.php?a=qq">个人中心&nbsp&nbsp&nbsp&nbsp</a>
         </li>
         
         <li>
@@ -88,7 +88,7 @@
 
     <li class="active"><a href="#">全部商品分类</a>
 
-    <li class="active"><a href="#"><a href="<?php echo URL ?>index.php">首页 </a></li>
+    <li class="active"><a href="<?php echo URL ?>index.php">首页 </a></li>
     <li class="active">
     <?php if (!empty($c_list)): ?>
                 

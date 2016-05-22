@@ -3,8 +3,9 @@
           $sql = "
         SELECT i.iname, g.gname, g.id, g.price, g.zan
         FROM ".PRE."goods g, ".PRE."image i
-        WHERE i.goods_id = g.id AND i.cover=1 AND g.state=1 AND g.is_new=1 limit 4
+        WHERE i.goods_id = g.id AND i.cover=1 AND g.state=1 AND g.is_new=1 limit 1000
     ";
+    // p($sql);
     $list = query($link, $sql);
     // p($list);exit;
 
@@ -22,26 +23,26 @@
 
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="lssistbox">
     <div class="item active">
-      <img src="./imgs/T1aZDjBCYv1RXrhCrK.jpg" alt="...">
+      <a href="./list.php"><img src="./imgs/T1aZDjBCYv1RXrhCrK.jpg" alt="..."></a>
       <div class="carousel-caption">
-        ...
+       
       </div>
     </div>
     <div class="item">
-      <img src="./imgs/T1NTZjBbdT1RXrhCrK.jpg" alt="...">
+      <a href="./list.php"><img src="./imgs/T1NTZjBbdT1RXrhCrK.jpg" alt="..."></a>
       <div class="carousel-caption">
-        ...
+      
       </div>
     </div>
       <div class="item">
-      <img src="./imgs/T1XedjByCv1RXrhCrK.jpg" alt="...">
+      <a href="./list.php"><img src="./imgs/T1XedjByCv1RXrhCrK.jpg" alt="..."></a>
       <div class="carousel-caption">
-        ...
+   
       </div>
     </div>
-    ...
+    
   </div>
 
   <!-- Controls -->
@@ -135,10 +136,29 @@
 
         <?php foreach ($list as $key => $val): ?>
 
-          <div class="sige br fl">
+          <div class="sige fl">
                       <a href="./contentinfo.php?id=<?php echo $val['id'] ?>&gname=<?php echo $val['gname'] ?>" target="_blank">
                       <img src="<?php echo getpath(URL.'uploads/',$val['iname'],'c') ?>">
                       </a>
+
+
+
+                      <div class="sj1-x bf">
+                 <a href="./contentinfo.php?id=<?php echo $val['id'] ?>&gname=<?php echo $val['gname'] ?>" target="_blank">
+             <span id="sp0"><span class="sp1"><?php echo $val['gname']?><span/> &nbsp <span class="sp2">&nbsp<?php echo $val['price']?></span><span class="sp3">元起</span></span>
+             </span>
+                <div class="ljgm fr">
+             <button type="button" class="btn btn-">立即购买</button>
+             </div>
+
+             <div class="xiaolong ">
+           <!--   <?php echo $val['msg']?> -->
+
+
+             </div>
+             
+            </div><!--end sj1-x-->
+
 
           </div>
 
@@ -166,27 +186,27 @@
     <div class="container"><!--四个小图片开始-->
      <div class="xinpin">新品上架</div>
 
-    <div class="sanjiao fl"><img src="./imgs/2016-04-30_230456.jpg"></div>
+    <div class="sanjiao fl"><a href="./404.html"><img src="./imgs/2016-04-30_230456.jpg"></a></div>
 
 
     <div class="sanjiao fl">
-      <div class="huosai fl"><img src="./imgs/2016-04-30_231007.jpg"></div>
+      <div class="huosai fl"><a href="./404.html"><img src="./imgs/2016-04-30_231007.jpg"></a></div>
       <div class="jinshu fr">
-        <div class="guasheng"><img src="./imgs/2016-04-30_232321.jpg"></div>
-        <div class="shubiao"><img src="./imgs/2016-04-30_231150.jpg"></div>
+        <div class="guasheng"><a href="./404.html"><img src="./imgs/2016-04-30_232321.jpg"></a></div>
+        <div class="shubiao"><a href="./404.html"><img src="./imgs/2016-04-30_231150.jpg"></a></div>
       </div>
       </div>
 
 
      
 
-      <div class="baohutao fl"><img src="./imgs/2016-04-30_231351.jpg"></div>
-      <div class="baohutao fl"><img src="./imgs/2016-04-30_231447.jpg"></div>
-      <div class="baohutao fl"><img src="./imgs/2016-04-30_231539.jpg"></div>
+      <div class="baohutao fl"><a href="./404.html"><img src="./imgs/2016-04-30_231351.jpg"></a></div>
+      <div class="baohutao fl"><a href="./404.html"><img src="./imgs/2016-04-30_231447.jpg"></a></div>
+      <div class="baohutao fl"><a href=""><img src="./imgs/2016-04-30_231539.jpg"></a></div>
 
       <div class="jishiben fl">
-        <div class="hougai"><img src="./imgs/2016-04-30_231626.jpg"></div>
-        <div class="bing"><img src="./imgs/2016-04-30_231658.jpg"></div>
+        <div class="hougai"><a href="./404.html"><img src="./imgs/2016-04-30_231626.jpg"></a></div>
+        <div class="bing"><a href="./404.html"><img src="./imgs/2016-04-30_231658.jpg"></a></div>
       </div>
         
       </div>
@@ -203,18 +223,18 @@
         <div class="remai"><!--热卖开始-->
         <div ><p>热卖电商</p></div>
             <!-- div class="sanjiao fl"><img src="./2016-04-30_231747.jpg"></div> -->
-<div class="sanjiao fl"><img src="./imgs/2016-05-01_001549.jpg"></div>
+<div class="sanjiao fl"><a href="./404.html"><img src="./imgs/2016-05-01_001549.jpg"></a></div>
 
     <div class="sanjiao fl">
-      <div class="huosai fl"><img src="./imgs/2016-04-30_231858.jpg"></div>
+      <div class="huosai fl"><a href="./404.html"><img src="./imgs/2016-04-30_231858.jpg"></a></div>
       <div class="jinshu fr">
-        <div class="guasheng"><img src="./imgs/2016-05-01_001846.jpg"></div>
-        <div class="shubiao"><img src="./imgs/2016-05-01_001926.jpg"></div>
+        <div class="guasheng"><a href="./404.html"><img src="./imgs/2016-05-01_001846.jpg"></a></div>
+        <div class="shubiao"><a href="./404.html"><img src="./imgs/2016-05-01_001926.jpg"></a></div>
       </div>
 
       </div>
       <div class="fc"></div>
-      <div class="lanya fr"><img src="./imgs/2016-05-01_002054.jpg"></div>
+      <div class="lanya fr"><a href="./404.html"><img src="./imgs/2016-05-01_002054.jpg"></a></div>
 
 
 
@@ -222,14 +242,14 @@
     <div>
 <div class="neiqian fl">
 <div class="usb">
-<div class="dukaqi"><img src="./imgs/2016-05-01_005137.jpg"></div>
-<div class="shuangcai"><img src="./imgs/2016-05-01_005215.jpg"></div>
+<div class="dukaqi"><a href="./404.html"><img src="./imgs/2016-05-01_005137.jpg"></a></div>
+<div class="shuangcai"><a href=""><img src="./imgs/2016-05-01_005215.jpg"></a></div>
   
 </div>
 
 
 
-<div class="gaosu fr"><img src="./imgs/2016-05-01_005410.jpg"></div>
+<div class="gaosu fr"><a href="./404.html"><img src="./imgs/2016-05-01_005410.jpg"></a></div>
 <div class="fc"></div>
 
 <!-- <div classs="shuaka bb"></div>
@@ -239,11 +259,11 @@
 
   
 </div>
-<div class="neiqian2 fl"><img src="./imgs/2016-05-01_003218.jpg"></div>
+<div class="neiqian2 fl"><a href="./404.html"><img src="./imgs/2016-05-01_003218.jpg"></a></div>
 <!-- <div class="neiqian bo fl"></div> -->
 <!-- <div class="fc"></div> -->
 
-<div class="shuaka fr"><img src="./imgs/2016-05-01_010440.jpg"></div>
+<div class="shuaka fr"><a href="./404.html"><img src="./imgs/2016-05-01_010440.jpg"></a></div>
 
 </div>
 
@@ -252,16 +272,16 @@
 
 <div class="remai2"><!--热卖商品-->
 <div ><p>热评商品</p></div>
-<div class="feiche fl"><img src="./imgs/2016-05-01_013546.jpg"></div>
-<div class="box bf fl"><img src="./imgs/1995_1_1359984635_3.jpg"></div>
-<div class="box bf fl"><img src="./imgs/1776_1_1358776675_3.jpg"></div>
-<div class="box bf fl"><img src="./imgs/1945_1_1359343942_3.jpg"></div>
+<div class="feiche fl"><a href="./404.html"><img src="./imgs/2016-05-01_013546.jpg"></a></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1995_1_1359984635_3.jpg"></a></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1776_1_1358776675_3.jpg"></a></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1945_1_1359343942_3.jpg"></a></div>
 
 
 
-<div class="box bf fl"><img src="./imgs/1964_1_1364824434_3.jpg"></div>
-<div class="box bf fl"><img src="./imgs/1778_1_1355903561_3.jpg"></div>
-<div class="box bf fl"><img src="./imgs/1312_1_1357479179_3.jpg"></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1964_1_1364824434_3.jpg"></a></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1778_1_1355903561_3.jpg"></a></div>
+<div class="box bf fl"><a href="./404.html"><img src="./imgs/1312_1_1357479179_3.jpg"></a></div>
 
 
 
@@ -270,10 +290,10 @@
 
 <div class="remai3"><!--特卖商品-->
 <div ><p>特卖商品</p></div>
-<div class="xianshi bf fl"><img src="./imgs/qianbao8.jpg"></div>
-<div class="box-sub bf fl"><img src="./imgs/4127_1_1374148722_3.jpg"></div>
-<div class="box-sub bf fl"><img src="./imgs/2525_1_1370525591_3.jpg"></div>
-<div class="box-sub bf fl"><img src="./imgs/4283_1_1376032486_3.jpg"></div>
+<div class="xianshi bf fl"><a href="./404.html"><img src="./imgs/qianbao8.jpg"></a></div>
+<div class="box-sub bf fl"><a href="./404.html"><img src="./imgs/4127_1_1374148722_3.jpg"></a></div>
+<div class="box-sub bf fl"><a href="./404.html"><img src="./imgs/2525_1_1370525591_3.jpg"></a></div>
+<div class="box-sub bf fl"><a href="./404.html"><img src="./imgs/4283_1_1376032486_3.jpg"></a></div>
 
  
   

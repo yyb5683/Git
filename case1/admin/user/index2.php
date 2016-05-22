@@ -29,12 +29,14 @@ $type=$_SESSION['admin']['name'];
     $row = query($link, $sql);
     $total = $row[0]['total'];
     //每页显示数
-    $num = 5;
+    $num = 4;
     //总页数
     $allpage = ceil($total / $num);
 
     //获取页码
-    $page = isset($_GET['page'])?(int)$_GET['page']:1;
+    // p($_GET);
+    // exit;
+    $page = isset($_GET['admin_page'])?(int)$_GET['admin_page']:1;
     //限制页码范围
     //页码:不能小于1 不能大于$allpage
     $page = max(1,$page);//[0,1]
@@ -58,7 +60,7 @@ $type=$_SESSION['admin']['name'];
             $num_link .= '<li class="active"><a href="./'.$pageurl.'?admin_page='.$i.$urlname.'">'.$i.'</a></li>';
             continue;
         }
-        $num_link .= '<li><a href="./'.$pageurl.'?_admin_page='.$i.$urlname.'">'.$i.'</a></li>';
+        $num_link .= '<li><a href="./'.$pageurl.'?admin_page='.$i.$urlname.'">'.$i.'</a></li>';
     }
     echo '<hr>';
     //5.SQL语句
@@ -157,11 +159,11 @@ $type=$_SESSION['admin']['name'];
                                 if($_SESSION['admin']['type']==0){
                                     if($_SESSION['admin']['type']==$val['type']){
 
-                                        echo '<a href="./admin_action.php?a=del">编辑</a>';
+                                        echo '<a href="./admin_edit.php?id='.$val['id'].'">编辑</a>';
 
                                     }else{
-                                        echo '<a href="./admin_action.php?a=edit">编辑</a>';
-                                        echo '<a href="./admin_action.php?a=del"删除</a>';
+                                        echo '<a href="./admin_edit.php?id='.$val['id'].'">编辑</a>';
+                                        echo '<a href="./admin_action.php?a=del&id='.$val['id'].'">删除</a>';
                                     }
 
                                    
@@ -169,7 +171,7 @@ $type=$_SESSION['admin']['name'];
                              
                                 }else{
                                     if($_SESSION['admin']['name']==$val['name']){
-                                        echo '<a href="./admin_action.php?a=edit&id='.$val['id'].'">编辑</td>';
+                                        echo '<a href="./admin_edit.php?id='.$val['id'].'">编辑</td>';
 
 
                                     }else{

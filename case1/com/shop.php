@@ -14,7 +14,7 @@
     //将该商品的所有非封面全部查出来
     $sql = "SELECT iname FROM ".PRE."image WHERE goods_id='$goods_id' AND cover=0";
     $img_list = query($link, $sql);
-    p($img_list);
+    // p($img_list);
 ?>
 
 <div class="container mt50">
