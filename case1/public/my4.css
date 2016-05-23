@@ -342,3 +342,6 @@ dt{
 .bzz2 a:hover{
   color:#FF6709;
 }
+
+.fengo{display: inline;}
+.fengo select{width:55px;height:42px;}

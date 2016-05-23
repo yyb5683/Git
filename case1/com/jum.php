@@ -192,7 +192,7 @@
     <div class="sanjiao fl">
       <div class="huosai fl"><a href="./404.html"><img src="./imgs/2016-04-30_231007.jpg"></a></div>
       <div class="jinshu fr">
-        <div class="guasheng"><a href="./404.html"><img src="./imgs/2016-04-30_232321.jpg"></a></div>
+        <div class="guasheng"><a href="./404.html"><img src="./imgs/2016-04-30_231048.jpg"></a></div>
         <div class="shubiao"><a href="./404.html"><img src="./imgs/2016-04-30_231150.jpg"></a></div>
       </div>
       </div>

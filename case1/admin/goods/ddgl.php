@@ -3,7 +3,7 @@
 
 
     $where = '';
-    $urlname = '';
+    $urlname = '&a=qq';
     $name = '';
     
     if (isset($_GET['name']) && !empty($_GET['name'])) {
@@ -14,18 +14,18 @@
 
     //分页开始
     //总记录数
-    $sql = "SELECT count(*) total FROM s47_admin_user $where";
+    $sql = "SELECT count(*) total FROM s47_order $where";
     $row = query($link, $sql);
     $total = $row[0]['total'];
     //每页显示数
-    $num = 5;
+    $num = 3;
     //总页数
     $allpage = ceil($total / $num);
 
     //获取页码
     // p($_GET);
     // exit;
-    $page = isset($_GET['admin_page'])?(int)$_GET['admin_page']:1;
+    $page = isset($_GET['page'])?(int)$_GET['page']:1;
     //限制页码范围
     //页码:不能小于1 不能大于$allpage
     $page = max(1,$page);//[0,1]
@@ -162,7 +162,7 @@
                                         echo ' <a href="">查看评论</a>';
                                         break;
                                         case '3':
-                                        echo '<button type="button" class="btn btn-primary">订单已取消</button>';
+                                        echo '订单已取消';
                                     
 
                                 }
@@ -250,13 +250,13 @@
                                         break;
                                         case '1':
                                         echo '<a href="./action1.php?a=fa&id='.$id.'&status=2"><button type="button" class="btn btn-success">点击强制收货</button></a>';echo '<br>';
-                                        echo '<button type="button" class="btn btn-warning">发货中</button>';
+                                        echo '发货中';
                                         break;
                                         case '2':
-                                        echo '<button type="button" class="btn btn-info">订单已完成</button>';
+                                        echo '订单已完成';
                                         break;
                                         case '3':
-                                        echo '<button type="button" class="btn btn-primary">订单已取消</button>';
+                                        echo '订单已取消';
                                     
 
                                 }
@@ -332,14 +332,14 @@
                                                                                             break;
                                                                                 case '1':
                                                                                             echo '<a href="./action1.php?a=fa&id='.$id.'&status=2"><button type="button" class="btn btn-success">点击强制收货</button></a>';echo '<br>';
-                                                                                            echo '<button type="button" class="btn btn-warning">发货中</button>';
+                                                                                            echo '发货中';
                                                                                             break;
                                                                                 case '2':
-                                                                                            echo '<button type="button" class="btn btn-info">订单已完成</button>';
+                                                                                            echo '订单已完成';
                                                                                         
                                                                                             break;
                                                                                 case '3':
-                                                                                            echo '<button type="button" class="btn btn-primary">订单已取消</button>';
+                                                                                            echo '订单已取消';
                                     
 
                                 }

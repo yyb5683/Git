@@ -451,9 +451,9 @@
 
 
           <div>
-      <h2 class="dapei bb">搭配更多智能硬件产品</h2>
-      <p class="zhong bb">以小米手机为中心，控制智能硬件产品，轻松享受智能生活带来的方便和舒适。</p>
-      <p class="zhong bb"><a href="">查看更多智能硬件产品</a></p>
+      <h2 class="dapei bb"><a href="./404.html">搭配更多智能硬件产品</a></h2>
+      <p class="zhong bb"><a href="./404.html">以小米手机为中心，控制智能硬件产品，轻松享受智能生活带来的方便和舒适.</a></p>
+      <p class="zhong bb"><a href="./404.html">查看更多智能硬件产品</a></p>
     </div>
 
 
@@ -461,7 +461,7 @@
 
 
           <div class=" bb">
-                      <div class="box1 bb fl"><img src="./T1obJvBghv1RXrhCrK220x220.jpg">
+                      <div class="box1 bb fl"><a href="./404.html"><img src="./imgs/T1o0h_B5VT1RXrhCrK220x220.jpg"></a>
                       <div class="box3">
                       <p class="zhong1">小米活塞耳机 基础版</p>
                       <p class="zhong2">新鲜绽放，5 色可选</p>
@@ -469,7 +469,7 @@
                       </div>
                       </div>
 
-        <div class="box bb fl"><img src="./T1o0h_B5VT1RXrhCrK220x220.jpg">
+        <div class="box bb fl"><a href="./404.html"><img src="./imgs/T1obJvBghv1RXrhCrK220x220.jpg"></a>
         <div class="box3">
         <p class="zhong1">小米活塞耳机标准版</p>
         <p class="zhong2">音质优化专利，金属复合振膜技术</p>
@@ -482,7 +482,7 @@
 
 
 
-        <div class="box bb fl"><img src="./T190DvB4dv1RXrhCrK220x220.jpg">
+        <div class="box bb fl"><a href="./404.html"><img src="./imgs/T190DvB4dv1RXrhCrK220x220.jpg"></a>
         <div class="box3">
         <p class="zhong1">小米蓝牙耳机</p>
         <p class="zhong2">6.5克轻巧，蓝牙4.1高清通话音质</p>
@@ -496,7 +496,7 @@
 
         <div class="w bb">
 
-        <div class="box1 bb fl"><img src="./T1Tfd_BjAv1RXrhCrK220x220.jpg">
+        <div class="box1 bb fl"><a href="./404.html"><img src="./imgs/T1Tfd_BjAv1RXrhCrK220x220.jpg"></a>
         <div class="box3 ">
         <p class="zhong1">小钢炮蓝牙音箱2</p>
         <p class="zhong2">极简设计，声声动听的桌上艺术品</p>
@@ -504,7 +504,7 @@
         </div>
         </div>
 
-        <div class="box bb fl"><img src="./T1vFEjBbWT1RXrhCrK220x220.jpg">
+        <div class="box bb fl"><a href="./404.html"><img src="./imgs/T1vFEjBbWT1RXrhCrK220x220.jpg"></a>
         <div class="box3 ">
         <p class="zhong1">小米USB充电器（4口）</p>
         <p class="zhong2">4个USB接口，2A快充，轻巧便携</p>
@@ -512,7 +512,7 @@
         </div>
         </div>
 
-        <div class="box bb fl"><img src="./T1ggWQBybT1RXrhCrK220x220.jpg">
+        <div class="box bb fl"><a href="./404.html"><img src="./imgs/T1ggWQBybT1RXrhCrK220x220.jpg"></a>
         <div class="box3 ">
         <p class="zhong1">小米移动电源10000mAh</p>
         <p class="zhong2">高密度进口电芯，仅名片大小</p>
@@ -533,10 +533,10 @@
 
     <div class="footer ">
     <div class="footer-a">
-    <span class="footer-b">&nbsp&nbsp&nbsp &nbsp &nbsp <a href="">1小时快修服务</a>&nbsp &nbsp &nbsp &nbsp |</span>
-    <span class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">天无理由退货</a> &nbsp &nbsp &nbsp &nbsp|</span>
-    <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">15天免费换货</a>&nbsp &nbsp &nbsp &nbsp|</span>
-     <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="">满150元包邮</a></span>
+    <span class="footer-b">&nbsp&nbsp&nbsp &nbsp &nbsp <a href="./404.html">1小时快修服务</a>&nbsp &nbsp &nbsp &nbsp |</span>
+    <span class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="./404.html">天无理由退货</a> &nbsp &nbsp &nbsp &nbsp|</span>
+    <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="./404.html">15天免费换货</a>&nbsp &nbsp &nbsp &nbsp|</span>
+     <span  class="footer-b">&nbsp &nbsp &nbsp &nbsp <a href="./404.html">满150元包邮</a></span>
     </div>
 
 
@@ -574,66 +574,66 @@
             <dl class="bzz fl">
                 <dt>帮助中心</dt>
                 
-                <dd><a rel="nofollow" href="">购物指南</a></dd>
+                <dd><a rel="nofollow" href="./404.html">购物指南</a></dd>
                 
-                <dd><a rel="nofollow" href="">支付方式</a></dd>
+                <dd><a rel="nofollow" href="./404.html">支付方式</a></dd>
                 
-                <dd><a rel="nofollow" href="">配送方式</a></dd>
+                <dd><a rel="nofollow" href="./404.html">配送方式</a></dd>
                 
             </dl>
                 
             <dl class="bzz2 fl">
                 <dt>服务支持</dt>
                 
-                <dd><a rel="nofollow" href="">售后政策</a></dd>
+                <dd><a rel="nofollow" href="./404.html">售后政策</a></dd>
                 
-                <dd><a rel="nofollow" href="">自助服务</a></dd>
+                <dd><a rel="nofollow" href="./404.html">自助服务</a></dd>
                 
-                <dd><a rel="nofollow" href="">相关下载</a></dd>
+                <dd><a rel="nofollow" href="./404.html">相关下载</a></dd>
                 
             </dl>
                 
             <dl class="bzz2 fl">
                 <dt>线下门店</dt>
                 
-                <dd><a rel="nofollow" href="">小米之家</a></dd>
+                <dd><a rel="nofollow" href="./404.html">小米之家</a></dd>
                 
-                <dd><a rel="nofollow" href="">服务网点</a></dd>
+                <dd><a rel="nofollow" href="./404.html">服务网点</a></dd>
                 
-                <dd><a rel="nofollow" href="">线下专区</a></dd>
+                <dd><a rel="nofollow" href="./404.html">线下专区</a></dd>
                 
             </dl>
                 
             <dl class="bzz2 fl ">
                 <dt>关于小米</dt>
                 
-                <dd><a rel="nofollow" href="">了解小米</a></dd>
+                <dd><a rel="nofollow" href="./404.html">了解小米</a></dd>
                 
-                <dd><a rel="nofollow" href="">加入小米</a></dd>
+                <dd><a rel="nofollow" href="./404.html">加入小米</a></dd>
                 
-                <dd><a rel="nofollow" href="">联系我们</a></dd>
+                <dd><a rel="nofollow" href="./404.html">联系我们</a></dd>
                 
             </dl>
                 
             <dl class="bzz2 fl">
                 <dt>关注我们</dt>
                 
-                <dd><a rel="nofollow" href="">新浪微博</a></dd>
+                <dd><a rel="nofollow" href="./404.html">新浪微博</a></dd>
                 
-                <dd><a rel="nofollow" href="">小米部落</a></dd>
+                <dd><a rel="nofollow" href="./404.html">小米部落</a></dd>
                 
-                <dd><a rel="nofollow" href="">官方微信</a></dd>
+                <dd><a rel="nofollow" href="./404.html">官方微信</a></dd>
                 
             </dl>
                 
             <dl class="bzz2 fl">
                 <dt>特色服务</dt>
                 
-                <dd><a rel="nofollow" href="" target="_blank">F 码通道</a></dd>
+                <dd><a rel="nofollow" href="./404.html" target="_blank">F 码通道</a></dd>
                 
-                <dd><a rel="nofollow" href="" target="_blank">小米移动</a></dd>
+                <dd><a rel="nofollow" href="./404.html" target="_blank">小米移动</a></dd>
                 
-                <dd><a rel="nofollow" href="" target="_blank">防伪查询</a></dd>
+                <dd><a rel="nofollow" href="./404.html" target="_blank">防伪查询</a></dd>
                 
             </dl>
                 
@@ -642,7 +642,7 @@
 <p><span class="J_serviceTime-normal" style="
 ">周一至周日 8:00-18:00</span>
 <span class="J_serviceTime-holiday" style="display:none;">2月7日至13日服务时间 9:00-18:00</span><br>（仅收市话费）</p>
-<a rel="nofollow" class="btn btn-line-primary btn-small" href=""><i class="iconfont"></i> 24小时在线客服</a>            </div>
+<a rel="nofollow" class="btn btn-line-primary btn-small" href="./404.html"><i class="iconfont"></i> 24小时在线客服</a>            </div>
 
 
         </div>

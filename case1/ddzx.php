@@ -42,6 +42,7 @@ $order_id=execute($link,$sql);
 
 
 
+
 $v= '';
 foreach($_SESSION['cart'] as $val){
 
@@ -55,7 +56,47 @@ $sql="INSERT INTO ".PRE."ordergoods VALUES $v";
 
 $row=execute($link,$sql);
 
-p($row);
+// p($row);
+
+
+
+$cart=$_SESSION['cart'];
+// p($cart);
+// exit;
+foreach ($cart as $val){
+    $qty=$val['qty'];
+    $id=$val['id'];
+
+
+// p($qty);
+
+
+
+$sql="SELECT `stock` FROM ".PRE."goods WHERE `id`='$id'";
+    // p($sql);
+
+    $stok=query($link,$sql);
+    $stok=$stok['0']['stock'];
+
+  $stok=$stok-$qty;
+
+
+$sql="UPDATE ".PRE."goods SET `stock`='$stok' WHERE `id`=$id";
+// p($sql);
+
+$rows=execute($link,$sql);
+// p($rows);
+  
+}
+
+
+
+
+
+
+
+
+unset($_SESSION['cart']);
 
 
 

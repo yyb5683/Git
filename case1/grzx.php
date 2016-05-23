@@ -3,21 +3,68 @@
 
 
 
-$user_id=$_SESSION['home']['id'];
-// p($user_id);
- 
-//
-             $sql="
-                     SELECT ordernum,id,status
-                     FROM ".PRE."order
-                     WHERE user_id=$user_id
-                    
-            ";
 
-            $list=query($link,$sql);
             // p($sql);
             // p($list);
 
+    $where = '';
+    $urlname = '&a=qq';
+    $name = '';
+    if (isset($_GET['name']) && !empty($_GET['name'])) {
+        $name = $_GET['name'];
+        $where = "WHERE `name` LIKE '%$name%'";//SQL查询条件
+        $urlname = "&name=$name";//url的参数
+    }
+
+        //分页开始
+    //总记录数
+    $sql = "SELECT count(*) total FROM ".PRE."order $where";
+    $row = query($link, $sql);
+    $total = $row[0]['total'];
+    //每页显示数
+    $num = 3;
+    //总页数
+    $allpage = ceil($total / $num);
+
+        //获取页码
+    // p($_GET);
+    // exit;
+    $page = isset($_GET['page'])?(int)$_GET['page']:1;
+    //限制页码范围
+    //页码:不能小于1 不能大于$allpage
+    $page = max(1,$page);//[0,1]
+    $page = min($page,$allpage);//[接收的页数,总页数]
+
+    //获取偏移量
+    $offset = ($page-1) * $num;
+    //获取上一夜/下一夜
+    $prev = $page - 1;
+    $next = $page + 1;
+
+    //控制数组页码的显示
+    $start = max($page - 2, 1);
+    $end = min($page + 2, $allpage);
+
+    $pageurl = 'grzx.php';
+    //产生数字链接
+    $num_link = '';
+    for ($i = $start; $i <= $end; $i++) {
+        if ($page == $i) {
+            $num_link .= '<li class="active"><a href="./'.$pageurl.'?page='.$i.$urlname.'">'.$i.'</a></li>';
+            continue;
+        }
+        $num_link .= '<li><a href="./'.$pageurl.'?page='.$i.$urlname.'">'.$i.'</a></li>';
+    }
+  
+    // $sql="SELECT ordernum,id,status FROM ".PRE."order $where LIMIT $offset,$num";
+    //     $list = query($link ,$sql);
+
+
+        //显示当前页查询到的记录数量
+        // $rows = mysqli_affected_rows($link);
+        // p($rows);
+        // exit;
+        
 
 
 
@@ -52,7 +99,21 @@ $user_id=$_SESSION['home']['id'];
             // }
 
 
+        $user_id=$_SESSION['home']['id'];
+// p($user_id);
+ 
+//
+             $sql="
+                     SELECT ordernum,id,status
+                     FROM ".PRE."order
+                     WHERE user_id=$user_id $where LIMIT $offset,$num
+                    
+            ";
 
+            $list=query($link,$sql);
+
+            //显示当前页查询到的记录数量
+        $rows = mysqli_affected_rows($link);
 
 
 
@@ -83,18 +144,18 @@ $user_id=$_SESSION['home']['id'];
 
                 
                 <li  class="yidong"><a href="./index.php">小米网</a></li>
-                <li><a href="#">MIUI</a></li>
-                <li><a href="#">米聊</a></li>
-                <li><a href="#">游戏</a></li>
-                <li><a href="#">多看阅读</a></li>
-                <li><a href="#">云服务</a></li>
-                <li><a href="#">小米移动版</a></li>
-                <li><a href="#">问题反馈</a></li>
-                <li><a href="#">Select Region</a></li>
+                <li><a href="./404.html">MIUI</a></li>
+                <li><a href="./404.html">米聊</a></li>
+                <li><a href="./404.html">游戏</a></li>
+                <li><a href="./404.html">多看阅读</a></li>
+                <li><a href="./404.html">云服务</a></li>
+                <li><a href="./404.html">小米移动版</a></li>
+                <li><a href="./404.html">问题反馈</a></li>
+                <li><a href="./404.html">Select Region</a></li>
 
-                 <div class="denglu2 fr"><a href="">购物车</a></div>  
-                 <div class="denglu fr"><a href="./grdd.php">我的订单</a></div>  
-                 <div class="denglu1 fr"><a href="">个人中心</a></div>  
+                 <div class="denglu2 fr"><a href="./showcart.php">购物车</a></div>  
+                 <div class="denglu fr"><a href="./grzx.php?a=qq">我的订单</a></div>  
+                 <div class="denglu1 fr"><a href="./grzx.php?a=gg">个人中心</a></div>  
 
 
               
@@ -112,9 +173,9 @@ $user_id=$_SESSION['home']['id'];
                         <li class="aa"><a href="./grzx.php?a=ww"> <h2><button type="button" class="btn btn-info btn-lg">未完成订单</button></h2></a></li>
                         <li><a href="./grzx.php?a=gg"><h2><button type="button" class="btn btn-info btn-lg">个人信息</button></h2></a></li>
                         <li><a href="./grzx.php?a=xx"><h2><button type="button" class="btn btn-info btn-lg">修改密码</button></h2></a></li>
-                        <li><a href="./grzx.php?a=ll"><h2><button type="button" class="btn btn-info btn-lg">兄弟连s47</button></h2></a></li>
+                      <!--   <li><a href="./grzx.php?a=ll"><h2><button type="button" class="btn btn-info btn-lg">兄弟连s47</button></h2></a></li>
                         <li><a href="./grzx.php?a=aa"><h2><button type="button" class="btn btn-info btn-lg">A组</button></h2></a></li>
-                        
+                         -->
                         <!-- <li><a href="#">电视</a></li>
                         <li><a href="#">盒子</a></li>
                         <li><a href="#">路由器</a></li>
@@ -136,7 +197,7 @@ $user_id=$_SESSION['home']['id'];
 
             <?php 
              // p($_GET);
-            $a=$_GET['a'];
+            @$a=$_GET['a'];
 
              if ($a=='qq') {
                # code...
@@ -147,7 +208,7 @@ $user_id=$_SESSION['home']['id'];
            <tr>
                   <th>商品</th>
                   <th>订单号：<?php echo $values['ordernum']; ?></th>
-                  <th>订单id</th>
+                
                   <th>数量</th>
                   <th>价格</th>
                   <th>状态</th>
@@ -170,7 +231,7 @@ $user_id=$_SESSION['home']['id'];
                 <tr>
                       <td> <img src="<?php echo getpath(URL.'uploads/',$li['iname'],'b') ?>"></td>
                       <td><?php echo $li['gname'] ?></td>
-                      <td><?php echo $values['id']; ?></td>
+                      
                       <td><?php echo $li['qty']; ?></td>
                       <td><?php echo $li['price']; ?></td>
                       <td>
@@ -543,7 +604,7 @@ echo '<input type="text" class="form-control" name="tel" placeholder="请输入�
         ?>
 
                 </table>
-
+                <?php require PATH.'./page.php';?>
         </div>
 
     <!-- 此处引入jQuery --> 

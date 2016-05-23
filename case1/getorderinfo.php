@@ -143,13 +143,42 @@ if(empty($_SESSION['home'])){
                 <?php 
                 if (!empty($_POST)) {
 
+
                         $_SESSION['order']['ordernum'] = $ordernum;
                         $_SESSION['order']['user_id'] = $_SESSION['home']['id'];
                         $_SESSION['order']['oname'] = $_POST['oname'];
                         $_SESSION['order']['phone'] = $_POST['phone'];
                         $_SESSION['order']['address'] = $_POST['address'];
                         $_SESSION['order']['allprice'] = $allprice;
-                        p( $_SESSION['order']);
+
+                        // p($_SESSION['order']);
+
+                         $phone=$_SESSION['order']['phone'];
+                         $address=$_SESSION['order']['address'];
+                         $oname=$_SESSION['order']['oname'];
+
+                        // echo '<tr class="active">收件人</tr>';
+                        // echo '<td class="active"><input type="text" name="oname" value="'.$oname.'"></td>';
+                        // echo '<tr class="success">移动电话</tr>';
+                        // echo '<td class="success"><input type="text" name="phone" value='.$phone.'></td>';
+                        // echo '<tr class="warning">收货地址</tr>';
+                        // echo '<td class="warning"><input type="text" name="address" value='.$address.'></td>';
+                        
+
+
+
+
+
+
+                     echo '<div class="col-sm-12">';
+                    echo '<dt>收件人</dt>';
+                     echo '<dd><input type="text" name="oname" value="'.$oname.'"></dd>';
+                     echo '<tr>移动电话</tr>';
+                    echo '<dd><input type="text" name="phone" value='.$phone.'></dd>';
+                    echo '<tr>收货地址</tr>';
+                    echo '<dd><input type="text" name="address" value='.$address.'></dd>';
+
+                     echo '<div>';
 
 
 
