@@ -159,7 +159,7 @@
                                         break;
                                         case '2':
                                         echo '订单已完成<br><br>';
-                                        echo ' <a href="">查看评论</a>';
+                                        echo ' <a href="../../404.html">查看评论</a>';
                                         break;
                                         case '3':
                                         echo '订单已取消';

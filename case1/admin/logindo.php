@@ -1,6 +1,13 @@
 <?php 
     require './init.php';
 
+
+
+         $regex1 = '/^[a-zA-Z][\w]{3,15}/i';
+     // 密码: 长度4-32位
+        $regex2 = '/^[\S]{4,32}$/';
+
+
     //表单不为空,如果有空值,回之
     foreach ($_POST as $key => $val) {
         if ($val == '') {
@@ -8,6 +15,27 @@
             exit;
         } 
     }
+
+
+   if (!preg_match($regex1, $_POST['name'])) {
+        // echo '用户名不合法!<br>';
+            admin_redirect('用户名不合法');
+            exit;
+
+        }
+
+ 
+        if (!preg_match($regex2, $_POST['pwd'])) {
+        
+        admin_redirect('密码格式不正确!');
+        exit;
+       
+     
+    }
+
+
+
+
 
 
     //验证码的检测

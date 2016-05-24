@@ -15,6 +15,7 @@
     switch ($a) {
 
         case 'edit':
+        
             
           
             $id = $_POST['id'];
@@ -39,6 +40,18 @@
             break;
 
         case 'add':
+
+
+            $regex1 = '/^[a-zA-Z][\w]{3,15}/i';
+    // 密码: 长度4-32位
+        $regex2 = '/^[\S]{4,32}$/';
+    // 手机: 长度11位,合法的手机号 
+        $regex3 = '/^1[^0129]\d{9}$/';
+    // email: 输入合法的email 
+        $regex4 = '/[\w\.]+@\w+(\.\w+)+(\.\w+)*/i';
+
+
+
             echo '正在添加用户....<br>';
             //表单不为空,如果有空值,回之
             foreach ($_POST as $key => $val) {
@@ -48,6 +61,34 @@
                 }
             }
 
+            if (!preg_match($regex1, $_POST['name'])) {
+        // echo '用户名不合法!<br>';
+            admin_redirect('用户名不合法');
+            exit;
+
+        }
+        if (!preg_match($regex2, $_POST['pwd'])) {
+        // echo '密码/格式不正确!<br>';
+        admin_redirect('密码格式不正确!');
+        exit;
+       
+     
+    }
+     if (!preg_match($regex3, $_POST['tel'])) {
+        // echo '手机号不合法!<br>';
+        admin_redirect('手机号不合法!');
+        exit;
+       
+    }
+
+     if (!preg_match($regex4, $_POST['email'])) {
+        // echo 'email地址不合法!<br>';
+        admin_redirect('email地址不合法!');
+        exit;
+        
+            }
+
+    
             //得到用户输入的信息
             //各种信息验证!!!
             

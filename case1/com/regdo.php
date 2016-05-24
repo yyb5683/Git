@@ -45,23 +45,32 @@ require '../init.php';
     //username
     
     if (!preg_match($regex1, $_POST['name'])) {
-        echo '用户名不合法!<br>';
+        // echo '用户名不合法!<br>';
+        redirect('用户名不合法!');
+        exit;
        }
     
 
 
        if (!preg_match($regex2, $_POST['pwd'])) {
-        echo '密码格式不正确!<br>';
+        // echo '密码格式不正确!<br>';
+        redirect('密码格式不正确!');
+        exit;
        
      
     }
     
        if (!preg_match($regex3, $_POST['tel'])) {
-        echo '手机号不合法!<br>';
+        // echo '手机号不合法!<br>';
+          redirect('手机号不合法!');
+          exit;
+       
        
     }
        if (!preg_match($regex4, $_POST['email'])) {
-        echo 'email地址不合法!<br>';
+        // echo 'email地址不合法!<br>';
+         redirect('email地址不合法!');
+         exit;
         
             }
 
