@@ -119,6 +119,7 @@ if(empty($_SESSION['home'])){
                     <dt>订单总价</dt>
                     <dd><?php 
                     $allprice = 0;
+                    if(!empty($_SESSION['cart']))
                     foreach ($_SESSION['cart'] as $key => $val) {
                         $allprice += $val['price'] * $val['qty'];
                         }

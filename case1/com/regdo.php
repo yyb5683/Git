@@ -52,13 +52,13 @@ require '../init.php';
     
 
 
-       if (!preg_match($regex2, $_POST['pwd'])) {
-        // echo '密码格式不正确!<br>';
-        redirect('密码格式不正确!');
-        exit;
+    //    if (!preg_match($regex2, $_POST['pwd'])) {
+    //     // echo '密码格式不正确!<br>';
+    //     redirect('密码格式不正确!');
+    //     exit;
        
      
-    }
+    // }
     
        if (!preg_match($regex3, $_POST['tel'])) {
         // echo '手机号不合法!<br>';
@@ -88,7 +88,7 @@ require '../init.php';
         redirect('注册成功!',URL.'login.php');
         exit;
     }else{
-        redirect('注册失败,请重试!');
+        redirect('注册失败,密码验证错误');
         exit;
     }
 

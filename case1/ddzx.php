@@ -1,11 +1,31 @@
 <?php
+
 require './init.php';
 
-// if(){}
+if(empty($_SESSION['order']['address'])){
+      redirect('请填写地址','./getorderinfo.php',1);
+    exit;
+
+}
+
+if(empty($_SESSION['order']['oname'])){
+    redirect('请填写收货人:','./getorderinfo.php',1);
+      
+    exit;
+
+}
+
+if(empty($_SESSION['order']['phone'])){
+    redirect('请填写手机号:','./getorderinfo.php',1);
+   
+    exit;
+
+}
 
 
 
 // p($_SESSION['order']);
+// exit;
 
 
 
@@ -97,6 +117,7 @@ $rows=execute($link,$sql);
 
 
 unset($_SESSION['cart']);
+unset($_SESSION['order']);
 
 
 

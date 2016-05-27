@@ -1,14 +1,33 @@
 <?php
 require './init.php';
-p($_POST);
+// p($_POST);
 $a=$_GET['a'];
 
 switch($a){
 
     case 'bj':
 
+
+
         $id=$_POST['id'];
         // p($id);
+        
+          $regex1 = '/^[a-zA-Z][\w]{3,15}/i';
+           $regex4 = '/[\w\.]+@\w+(\.\w+)+(\.\w+)*/i';
+        if (!preg_match($regex1, $_POST['name'])) {
+        // echo '用户名不合法!<br>';
+        redirect('用户名不合法!');
+        exit;
+       }
+
+             if (!preg_match($regex4, $_POST['email'])) {
+        // echo 'email地址不合法!<br>';
+         redirect('email地址不合法!');
+         exit;
+        
+            }
+
+
 
         echo '正在编辑用户';
         $set = '';
@@ -23,9 +42,12 @@ switch($a){
 
          $id = execute($link,$sql);
 
+         unset($_SESSION['home']);
+
 
         if($id){
-            redirect('成功编辑用户','./grzx.php?a=qq',10);
+
+            redirect('成功编辑用户','./login.php',3);
             exit;
 
         }else{

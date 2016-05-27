@@ -11,7 +11,24 @@
 
     //验证码的检测
     //检测用户名和密码的合法性
-    
+      $regex1 = '/^[a-zA-Z][\w]{3,15}/i';
+
+      $regex2 = '/^[\S]{4,32}$/';
+
+          if (!preg_match($regex1, $_POST['name'])) {
+        // echo '用户名不合法!<br>';
+        redirect('用户名不合法!');
+        exit;
+       }
+
+
+             if (!preg_match($regex2, $_POST['pwd'])) {
+        // echo '密码格式不正确!<br>';
+        redirect('密码格式不正确!');
+        exit;
+       
+     
+    }
 
 
     

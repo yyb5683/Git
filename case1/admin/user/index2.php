@@ -175,7 +175,7 @@ $type=$_SESSION['admin']['name'];
 
 
                                     }else{
-                                        echo '权限不足';
+                                        echo '无权限';
                                     }
                                 }
 

@@ -195,13 +195,15 @@
         <div class="container">
                 <table class="table">
 
+
             <?php 
              // p($_GET);
             @$a=$_GET['a'];
 
              if ($a=='qq') {
                # code...
-            
+           
+            if(!empty($list))
             foreach($list as $values){
                     $id=$values['id'];?>
 
@@ -298,7 +300,7 @@ echo '<div calss="row mt20"></div><br><br><br>';
 
 
 
-   echo '<form action="./com/mimado.php" method="post" class="form-horizontal col-md-4 col-md-offset-4">';
+   echo '<form action="./mimado.php" method="post" class="form-horizontal col-md-4 col-md-offset-4">';
 
         echo '<div class="form-group">';
             echo '<div class="col-md-7">';
@@ -598,7 +600,7 @@ echo '<input type="text" class="form-control" name="tel" placeholder="请输入�
  
                     }
 
-
+  
                   }
   
         ?>

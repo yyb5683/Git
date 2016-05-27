@@ -4,14 +4,15 @@
    
     // p($list);exit;
     
-
+// p($_POST);
+// exit; 
 
     $where = '';
     $urlname = '';
     $name = '';
     if (isset($_GET['name']) && !empty($_GET['name'])) {
         $name = $_GET['name'];
-        $where = "WHERE `name` LIKE '%$name%'";//SQL查询条件
+        $where = "WHERE `gname` LIKE '%$name%'";//SQL查询条件
         $urlname = "&name=$name";//url的参数
     }
 
@@ -67,17 +68,23 @@
         $sql = "
     SELECT g.id, g.gname, g.price, g.stock, g.sale, g.is_new, g.is_hot, g.state, g.zan, g.msg, c.cname, i.iname
     FROM ".PRE."goods g,".PRE."category c,".PRE."image i 
-    WHERE g.cate_id = c.id AND g.id = i.goods_id AND cover=1 LIMIT $offset,$num
+    WHERE g.cate_id = c.id AND g.id = i.goods_id AND cover=1 $where LIMIT $offset,$num
      ";
+     // p($sql);
      
     $list = query($link ,$sql);
+
+
+
+    // p($list);
+    // exit;
 
 
     // $sql = "SELECT `id`,`gname`,`cate_id`,`price`,`stock`,`sale`,`is_new`,`is_hot`,`state`,`zan`,`msg`
     // FROM ".PRE."goods $where LIMIT $offset,$num";
     //  p($sql);
     //处理结果集
-    $user_list = query($link,$sql);
+    // $user_list = query($link,$sql);
     // p($user_list);
     // echo'<pre>';
     // print_r($user_list);
@@ -118,6 +125,17 @@
 </head>
 <body>
 <div class="container">
+    <div>
+    <form class="navbar-form navbar-left" >
+
+                    <div class="form-group">
+                        
+                      <input type="text" name="name" class="form-control" placeholder="按商品名搜索">
+                    </div>
+                   <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+        
+    </div>
     <div class="row">
         <h2>商品管理</h2>
 
